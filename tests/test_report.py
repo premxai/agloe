@@ -1,4 +1,4 @@
-﻿"""Report card tests on synthetic swarms (no raw data, no network)."""
+"""Report card tests on synthetic swarms (no raw data, no network)."""
 from __future__ import annotations
 
 import gzip

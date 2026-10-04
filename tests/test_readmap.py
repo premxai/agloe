@@ -1,4 +1,4 @@
-﻿"""Unit tests for the read-map verifier's token classifier (pure functions, no raw data)."""
+"""Unit tests for the read-map verifier's token classifier (pure functions, no raw data)."""
 from __future__ import annotations
 
 from scripts.verify_readmap import classify, shannon

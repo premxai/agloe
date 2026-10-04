@@ -38,3 +38,7 @@ scripts/probe_bio.py
 /arxiv/*.out
 /arxiv/*.blg
 /arxiv/*.xdv
+
+# demo clips (large; upload them yourself)
+/media/
+/hf_release/

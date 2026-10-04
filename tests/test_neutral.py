@@ -1,4 +1,4 @@
-﻿"""Copy-or-coincidence analysis: expected values worked out by hand on tiny synthetic logs."""
+"""Copy-or-coincidence analysis: expected values worked out by hand on tiny synthetic logs."""
 from backend.analysis.neutral import BaseRates, Write, arbitrary_params, high_entropy, structure, summarize
 
 

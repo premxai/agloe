@@ -17,7 +17,7 @@ Built for the AI Swarm Dynamics Hackathon by **Paper Towns**. *Read the past hon
 | **Trap streets** | Serving each page view with its own load-bearing token turns a copied link into a pointer to the exact copy. Whether the token survives depends on the model: it rides along for agents that copy links verbatim and is bypassed by agents that redo the work. Tags lift attribution over the best simple edit-log rule in proportion to survival. |
 | **Only way in** | Closing the door models use to skip the token (the mirror hands out sessions only through wiki-served links) raised the share of outputs carrying a traceable token from 25-50% to 100% for DeepSeek, GLM, MiniMax and Kimi, and every agent still finished. In the lab this follows from the access design, so it shows feasibility and cost, not a discovery; a gate traces access, not ideas. |
 | **What to re-check** | When a bad tip has spread, tracing it cuts the re-check list from about 83% of outputs (everything submitted after the tip appeared) to about 8-9%, and finds 88-92% of the outputs the tip reached. A simple earliest-writer rule gets most of that; the codes make the list exact (no false alarms). A tip that is there from the start reaches about 80% of outputs, so nothing saves much: catch it early. |
-| **A bad tip** | Whether a planted bad tip takes hold depends on the model. An early tip was adopted by every agent of the core model (Qwen3-235B) through cascades 6-9 hops deep, where the best edit-log rule named only a minority of the immediate sources, but by only part or none of the agents of most other model families; a late tip was mostly ignored. |
+| **A bad tip** | Whether a planted bad tip takes hold depends on the model. An early tip was adopted by every agent of the core model (Qwen3-235B) through chains of copies that were 6-9 hops deep at their deepest in 18 of 20 tagged runs, where the best edit-log rule named only a minority of the immediate sources, but by only part or none of the agents of most other model families; a late tip was mostly ignored. |
 
 Details, tables with confidence intervals, and everything that did not work are in the [paper](frontend/paper/agloe.html) and `docs/RESULTS.md` (sections A-P). Honest limits are in the paper's section 6.
 
@@ -68,6 +68,8 @@ python -m scripts.write_results_lab            # regenerates the lab sections of
 python -m scripts.build_site_data && python -m scripts.build_paper --pdf
 ```
 
+The lab run records (`data/lab/`, about 7,300 agent runs) are not in git. To re-run the analysis, `scripts.finalize` or the paper build (`python -m scripts.build_arxiv`, then `python -m scripts.pack_arxiv`), download them from the Hugging Face dataset (`<hf dataset url>`) into `data/lab/`. The committed `bench_release/` and `frontend/data/` are enough to run the benchmark scorer and the site.
+
 Keys live in `.env` only (never committed; see `.env.example`). The real-data analyses (`backend.cli audit|neutral|markers`, `scripts/run_ai_village.py`, `scripts/verify_readmap.py`) need datasets you obtain yourself (see below) and are not run by the tests.
 
 ## Data and ethics
@@ -84,6 +86,7 @@ backend/analysis/report.py   the report card (CLI + parity reference)      backe
 backend/sim, backend/bench   simulator with ground truth, ceilings, tracers  backend/adapters   collusion.wiki / AI Village adapters
 experiments/lab              lab grid, resumable runner, analysis              experiments/mini_swarm   offline worlds and agents
 frontend/{card,replay,paper} browser report card, swarm replay, paper         bench_release        Agloe-Bench scorer and format
+arxiv/                       arXiv-format paper (LaTeX, generated from results)  scripts/arxiv_*.py, build_arxiv.py, pack_arxiv.py   its generators
 scripts/                     exports, site and paper builders, live demo       docs/                RESULTS, CANARY, LAUNCH drafts
 ```
 

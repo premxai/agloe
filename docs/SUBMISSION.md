@@ -3,6 +3,7 @@
 **Team:** Paper Towns · **Project:** Agloe: trap streets for AI agent swarms
 **Links:** repo `<github url>` · live demo and report card `<site url>` · paper `<site url>/paper/agloe.pdf` · video `<video url>`
 **Team members / emails:** `<names and emails>`
+**Video:** a silent 58-second screen-free recording of the Face-Off story is in `media/agloe-face-off.mp4` (upload it to YouTube or Drive and paste the link above; it is not in git). **Longer paper (optional):** an arXiv-format version is in `arxiv/` (see `arxiv/TODO_BEFORE_ARXIV.md`; link it only once it is posted).
 
 ## One-paragraph write-up
 
@@ -22,7 +23,7 @@ We report what did not work as carefully as what did.
    3 were real, and provable only because the URL carried a per-fetch session token (48 distinct values for one resource): a trap street that occurred by accident.
 3. **Logging decides traceability.** Same method over every week of the whole AI Village chat (173,493 agent messages): 100% of copies had a visible source before chat was split into rooms,
    97% after (lowest week 85%), versus 16-20% in the incident, where reads were never logged. (We first showed one hand-picked post-rooms week at 87%; it was among the lowest, so we replaced it with the whole-dataset result.)
-4. **Whether a bad tip takes hold depends on the model.** In the lab, an early bad tip was adopted by every agent of the core model through cascades 6 to 9 hops deep, and the
+4. **Whether a bad tip takes hold depends on the model.** In the lab, an early bad tip was adopted by every agent of the core model through chains of copies that were 6 to 9 hops deep at their deepest in 18 of 20 tagged runs, and the
    best simple edit-log rule named only a minority of the immediate sources; other model families adopted it partly or not at all, and a late tip was ignored by most families.
 5. **Tags help in proportion to how many agents copy the artifact.** Lift over the best simple edit-log rule ranged from about 0 to +68 points by model (largest for Qwen3.5, Qwen3 and Hermes); agents that redo the work
    (fetch their own session) bypass the tag. Single-origin tips can be root-caused without tags.
