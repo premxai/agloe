@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Independent agents (no wiki) differ in whether they add a throwaway ``random'' value to a URL, and several pick the same one.}\label{tab:habits}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+Model & Agents adding a cache-buster value & Most common value \\
+\midrule
+Kimi-K3 & 80\% & \texttt{bust=1} ($\times$56) \\
+GLM-5.2 & 20\% & \texttt{bust=1} ($\times$14) \\
+DeepSeek-V4-Pro & 13\% & \texttt{bust=1} ($\times$7) \\
+MiniMax-M3 & 4\% & \texttt{bust=1} ($\times$2) \\
+gpt-oss-120B & 0\% & -- \\
+Hermes-4-405B & 0\% & -- \\
+Nemotron-3-120B & 0\% & -- \\
+Qwen3-235B & 0\% & -- \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.96\linewidth}{\footnotesize 30 agents per model per run, three runs.}
+\end{table}

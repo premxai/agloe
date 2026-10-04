@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agloe · Colony</title>
+<meta name="description" content="Drop your swarm's log and watch it as an ant colony: every agent is an ant, trails form as agents pick things up from each other, and you can click any ant to trace it back to what it read. Runs entirely in your browser.">
+<link rel="stylesheet" href="../card/card.css">
+<link rel="stylesheet" href="colony.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Agloe · trap streets for AI agent swarms</p>
+    <h1>The colony</h1>
+    <p class="lede">Drop your swarm's log, or open one of ours. Every agent becomes an ant. Watch the trails form as agents pick things up from each other, then click an ant to trace it back to
+      <em>what it read</em> and to see who is downstream of it.</p>
+    <p class="privacy"><span class="dot" aria-hidden="true"></span><b>Runs in your browser.</b> Your file is read locally and never uploaded (open DevTools → Network to check).</p>
+  </header>
+
+  <section id="drop" tabindex="0" role="button" aria-label="Choose a log file or drop it here">
+    <p class="big">Drop a <code>.jsonl</code>, <code>.json</code>, <code>.csv</code> or <code>.gz</code> log here</p>
+    <p class="muted">or <label class="link">choose a file<input id="file" type="file" accept=".jsonl,.json,.gz,.txt,.csv"></label> · or open a recorded run:</p>
+    <div class="samples"><select id="sample" aria-label="Open one of our recorded runs"></select><button id="load-sample">Open</button></div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="mapper" hidden aria-labelledby="h-map">
+    <h2 id="h-map">Tell us which fields to use</h2>
+    <p class="muted small">We could not find agent, time and content fields by name. Pick them here; nothing is uploaded.</p>
+    <div class="mapgrid">
+      <label>Who wrote it (agent)<select id="m-agent"></select></label>
+      <label>When (time)<select id="m-time"></select></label>
+      <label>Where it was visible (channel)<select id="m-channel"></select></label>
+      <label>What was written (content)<select id="m-content"></select></label>
+    </div>
+    <pre id="m-preview" class="muted small" aria-label="Preview of the first rows"></pre>
+    <button id="m-go">Build the colony</button>
+  </section>
+
+  <section id="colony" hidden aria-label="The colony">
+    <p id="blurb" class="blurb"></p>
+    <div class="grid">
+      <div class="stage">
+        <canvas id="c" role="img" aria-label="An ant colony: each ant is an agent, chambers are the pages or rooms agents work in, and trails show who picked something up from whom. The facts are listed beside it."></canvas>
+        <div id="tip" role="status" hidden></div>
+        <div class="legend" aria-label="Legend">
+          <span><i class="sw ok"></i> trail to what it read (exact)</span><span><i class="sw amb"></i> one of several: identical copies, or the same link without the copy's own code</span>
+          <span><i class="sw tok"></i> picked up a string seen earlier in the same room</span><span><i class="sw hid"></i> source not visible in the log</span>
+          <span><i class="ant flag"></i> flagged output</span><span><i class="ant none"></i> no trail found</span>
+        </div>
+      </div>
+      <aside class="side" aria-live="polite">
+        <div class="counters" id="counters"></div>
+        <h3>Live feed</h3>
+        <ul id="feed" class="feed"></ul>
+        <h3>Selected ant</h3>
+        <div id="sel" class="sel muted">Click an ant to trace it back, and to see who is downstream of it.</div>
+        <h3>Biggest spreaders</h3>
+        <ul id="spreaders" class="list"></ul>
+        <h3>Strings to follow</h3>
+        <ul id="strings" class="list"></ul>
+      </aside>
+    </div>
+
+    <div class="playbar">
+      <button id="play" aria-label="Play or pause">Pause</button>
+      <label class="speed">Speed <select id="speed" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="5">5×</option><option value="15">15×</option></select></label>
+      <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Position in the log">
+      <span id="clock" class="muted"></span>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="t-hidden" checked> show hidden sources</label>
+      <label><input type="checkbox" id="t-coin"> show coincidences (shared vocabulary)</label>
+      <label><input type="checkbox" id="t-show"> show the strings themselves (they are text from your log)</label>
+    </div>
+
+    <details class="criteria" id="criteria-run" open>
+      <summary>How this run was set up (the criteria)</summary>
+      <div id="criteria-body"></div>
+    </details>
+    <details class="criteria">
+      <summary>What counts as a copy here</summary>
+      <ul>
+        <li><b>A distinctive string.</b> At least 12 characters; not a common word, header or hex/number run; not a snake_case or camelCase field name or a round timestamp (those are vocabulary agents type independently); used by 2 to 10 agents.</li>
+        <li><b>A copy</b> is a later agent using a string an earlier agent used. It is <b>trusted</b> only if the string is strong evidence (a UUID or minted id) or used by at most 3 agents. The rest are "coincidence": shared vocabulary or common habits. The card's counts and these counts are the same by construction (tested).</li>
+        <li><b>A visible source</b> is an earlier user of the string in the same channel (room, page). If there is none, the source is hidden: the agent may have read it somewhere the log does not show.</li>
+        <li><b>What it read.</b> If the log has read events (<code>kind: "read"</code>, content = the exact copy served, <code>source</code> = who wrote it), an agent's first later event that contains something it read is a trail to that source: exact if the copy was unique (the most specific match wins), "one of several" if identical copies came from different authors, and "copy unknown" if it used the same link but not the copy it was served (its code was dropped or replaced by its own).</li>
+        <li><b>Downstream</b> is everyone reachable by following those trails forward from an ant. If that ant's output is bad, those are the outputs to re-check. A trace cannot find outputs that went wrong some other way.</li>
+        <li>"Copied" means <i>exposed to it first</i>, not intent. How we ran our own experiments: <a href="../#method">How we tested</a>.</li>
+      </ul>
+    </details>
+    <details class="criteria">
+      <summary>Use AI Village data, or any other log</summary>
+      <p class="small">The AI Village dataset and the real incident export are not ours to redistribute, so they are not on this page. Export a window on your own machine and drop the file here:</p>
+      <pre>python -m scripts.export_log --dataset ai_village --lo 2026-03-23 --hi 2026-03-30
+python -m scripts.export_log --dataset lab --cell W2-inert-qwen-n30-s1        # our lab, with its hidden read log</pre>
+      <p class="small">Any other log: one JSON object per line with <code>agent</code>, <code>time</code>, <code>channel</code>, <code>content</code> (or a CSV; the page asks which columns to use). Add <code>"kind": "read"</code> and <code>"source"</code> rows if you log reads, and <code>"flag": true</code> on outputs you know are bad.</p>
+    </details>
+  </section>
+
+  <footer>
+    <p>Source: <code>frontend/card/card-core.js</code> (the tracing core, parity-tested against the report card) and <code>frontend/colony/colony.js</code>. Built for the AI Swarm Dynamics Hackathon by Paper Towns.
+      <a href="../card/">Report card</a> · <a href="../replay/faceoff.html">Face-off</a> · <a href="../">Project page</a></p>
+  </footer>
+</main>
+<script type="module" src="colony.js"></script>
+</body>
+</html>

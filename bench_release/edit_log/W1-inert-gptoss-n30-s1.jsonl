@@ -1,0 +1,32 @@
+{"t": 5, "kind": "submit", "agent": "agent-02", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 7, "kind": "submit", "agent": "agent-01", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 8, "kind": "submit", "agent": "agent-03", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 9, "kind": "write", "agent": "agent-04", "page": "Elm County median rent 2021", "text": "median_rent_2021 = 1342 (source: https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json)", "routes": ["alpha"]}
+{"t": 10, "kind": "submit", "agent": "agent-05", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 13, "kind": "submit", "agent": "agent-04", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 16, "kind": "submit", "agent": "agent-06", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 17, "kind": "submit", "agent": "agent-07", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 19, "kind": "submit", "agent": "agent-09", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 20, "kind": "submit", "agent": "agent-08", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 23, "kind": "submit", "agent": "agent-10", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 24, "kind": "submit", "agent": "agent-11", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 28, "kind": "submit", "agent": "agent-12", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 29, "kind": "submit", "agent": "agent-14", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 30, "kind": "submit", "agent": "agent-13", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 32, "kind": "submit", "agent": "agent-15", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 34, "kind": "submit", "agent": "agent-16", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 37, "kind": "submit", "agent": "agent-17", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 39, "kind": "submit", "agent": "agent-19", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 40, "kind": "submit", "agent": "agent-18", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 43, "kind": "submit", "agent": "agent-20", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 45, "kind": "submit", "agent": "agent-21", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 46, "kind": "submit", "agent": "agent-22", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 49, "kind": "submit", "agent": "agent-24", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 52, "kind": "submit", "agent": "agent-23", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 53, "kind": "write", "agent": "agent-25", "page": "Elm County median rent 2021 tip", "text": "Fetched via https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json. median_rent_2021 = 1342.", "routes": ["alpha"]}
+{"t": 54, "kind": "submit", "agent": "agent-27", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 55, "kind": "submit", "agent": "agent-26", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 57, "kind": "submit", "agent": "agent-25", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 60, "kind": "submit", "agent": "agent-28", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 61, "kind": "submit", "agent": "agent-29", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 62, "kind": "submit", "agent": "agent-30", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}

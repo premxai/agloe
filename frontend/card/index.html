@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agloe · Swarm Traceability Report Card</title>
+<meta name="description" content="Drop your agent swarm's logs and get an honest answer about what can be traced: which copies are real, which are coincidence, and what to log next. Runs entirely in your browser.">
+<link rel="stylesheet" href="card.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Agloe · trap streets for AI agent swarms</p>
+    <h1>Swarm Traceability Report Card</h1>
+    <p class="lede">Drop your swarm's logs. In seconds you get an honest answer to <em>"if something bad spreads through my agents, can I trace it?"</em>
+      — which repeated strings are real copying, which are coincidence, and what to log next.</p>
+    <p class="privacy"><span class="dot" aria-hidden="true"></span><b>Runs in your browser.</b> Your file is read locally and is never uploaded
+      (open DevTools → Network to check).</p>
+  </header>
+
+  <section id="drop" tabindex="0" role="button" aria-label="Choose a log file or drop it here">
+    <p class="big">Drop a <code>.jsonl</code>, <code>.jsonl.gz</code> or <code>.json</code> (array) log here</p>
+    <p class="muted">or <label class="link">choose a file<input id="file" type="file" accept=".jsonl,.json,.gz,.txt,.csv"></label>
+      · or try a sample:</p>
+    <div class="samples">
+      <button data-sample="incident_like.jsonl">Incident-like swarm (grade D)</button>
+      <button data-sample="synthetic.jsonl">Synthetic swarm</button>
+      <button data-sample="lab_w1_loadbearing_qwen.jsonl">Lab swarm, tagged (shows N/A)</button>
+      <button data-sample="lab_w2_none_qwen.jsonl">Lab swarm, planted rumor (shows N/A)</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="mapper" hidden aria-labelledby="h-map">
+    <h2 id="h-map">Tell us which fields to use</h2>
+    <p class="muted small">We could not find agent, time and content fields by name. Pick them here; this also happens in your browser and nothing is uploaded.</p>
+    <div class="mapgrid">
+      <label>Who wrote it (agent)<select id="m-agent"></select></label>
+      <label>When (time)<select id="m-time"></select></label>
+      <label>Where it was visible (channel)<select id="m-channel"></select></label>
+      <label>What was written (content)<select id="m-content"></select></label>
+    </div>
+    <pre id="m-preview" class="muted small" aria-label="Preview of the first rows"></pre>
+    <button id="m-go">Build the card</button>
+  </section>
+
+  <details class="schema">
+    <summary>What format? (one JSON object per line)</summary>
+    <pre>{"agent": "agent-7", "time": "2026-06-18T21:06:50Z", "channel": "wiki/StartPage", "content": "…text the agent wrote…"}</pre>
+    <ul>
+      <li><b>agent</b> who wrote it <span class="muted">(or author, speaker, label, user, agent_name, sender, actor, name)</span></li>
+      <li><b>time</b> sortable timestamp <span class="muted">(or t, timestamp, created_at, ts)</span></li>
+      <li><b>channel</b> where it was written and readable <span class="muted">(or room, page, page_id, location, thread, session, conversation)</span> — use one value for a single shared chat; use page or room ids when agents only see part of the swarm</li>
+      <li><b>content</b> the text <span class="muted">(or text, body, message, msg)</span> — URLs, code, chat, tool output</li>
+    </ul>
+    <p class="muted">A string counts as a possible marker only if it is distinctive (not a common word, header or field name) and used by few agents.
+      Everything else is treated as vocabulary agents type independently.</p>
+    <p class="muted">Other shapes work too: a JSON array, or a <code>.csv</code> with a header row. If the field names differ, the page asks you to pick them.</p>
+  </details>
+
+  <details class="schema">
+    <summary>How do I export my swarm's logs?</summary>
+    <p>You need one line per thing an agent wrote or posted (a chat message, a wiki edit, a board post, a tool result another agent can see). Whatever your framework,
+      loop over what it stored and write a line for each:</p>
+    <pre>import json
+with open("swarm_log.jsonl", "w") as out:
+    for m in stored_messages:                      # however your swarm keeps them
+        out.write(json.dumps({"agent": m.sender, "time": m.created_at,
+                              "channel": m.room_or_thread, "content": m.text}) + "\n")</pre>
+    <ul>
+      <li><b>One shared chat or board?</b> Use the same channel value for everything. Cards are strictest when each room, page or thread gets its own channel.</li>
+      <li><b>No timestamps?</b> The mapper offers "row order" if your rows are already in the order things happened.</li>
+      <li><b>Include shared artifacts:</b> links, file paths, IDs, snippets. Those are the strings that can carry a trail.</li>
+      <li><b>Sharing a card:</b> "Copy card as JSON" leaves out the strings taken from your logs unless you tick the box. Counts and rates are all we need.</li>
+    </ul>
+  </details>
+
+  <section id="result" hidden aria-live="polite">
+    <div class="gradebox">
+      <div id="grade" class="grade" aria-label="Traceability grade">–</div>
+      <div>
+        <h2 id="headline"></h2>
+        <p id="summary" class="muted"></p>
+        <p id="meta" class="meta"></p>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><span class="lbl">Carrier coverage</span><span id="t-cov" class="num"></span>
+        <div class="bar"><i id="b-cov"></i></div><span class="hint">of real copies, a source is visible where they reappear</span></div>
+      <div class="tile"><span class="lbl">Best possible top-1</span><span id="t-top" class="num"></span>
+        <div class="bar"><i id="b-top"></i></div><span class="hint">even a perfect tracer names the source this often</span></div>
+      <div class="tile"><span class="lbl">Copy or coincidence?</span><span id="t-naive" class="num"></span>
+        <div class="bar split"><i id="b-sup"></i><i id="b-dec"></i></div><span class="hint" id="h-naive"></span></div>
+    </div>
+
+    <h3>Everyone types this</h3>
+    <p class="muted small">Strings used by many agents. A naive detector would call these collusion; they are shared vocabulary or common model habits.</p>
+    <table id="shared"><thead><tr><th>String</th><th class="r">Agents</th><th>Kind</th></tr></thead><tbody></tbody></table>
+
+    <h3>What to do next</h3>
+    <ul id="recs"></ul>
+
+    <div class="actions">
+      <button id="copy-json">Copy card as JSON</button>
+      <button id="copy-text">Copy shareable summary</button>
+      <button id="again">Check another file</button>
+    </div>
+    <label class="small muted"><input type="checkbox" id="inc-strings"> Include the most-shared strings in the JSON (they are text taken from your logs)</label>
+    <p class="muted small">The shared card holds only counts and rates. The “Everyone types this” strings stay out of it unless you tick the box above.</p>
+  </section>
+
+  <footer>
+    <p>Method: for every distinctive string that several agents used, was an earlier user visible in the same channel (carrier coverage), and could a perfect
+      tracer pick the source (uniform ceiling)? Matches that are common vocabulary or used by too many agents are declined as coincidence.
+      Source and tests: <code>backend/analysis/report.py</code> (the Python tool this page is a parity-tested port of).
+      Plant canary tags with <code>backend/canary.py</code>. Built for the AI Swarm Dynamics Hackathon by Paper Towns.</p>
+  </footer>
+</main>
+<script type="module" src="card.js"></script>
+</body>
+</html>

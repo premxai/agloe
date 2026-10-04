@@ -1,0 +1,49 @@
+{
+ "events": 43,
+ "agents": 26,
+ "channels": 3,
+ "distinct_shared_strings": 6,
+ "naive_copy_calls": 60,
+ "calibrated_copy_calls": 12,
+ "declined_as_coincidence": 48,
+ "carrier_coverage": 0.667,
+ "carrier_coverage_ci95": [
+  0.391,
+  0.862
+ ],
+ "best_possible_top1": 0.625,
+ "naive_coverage": 0.833,
+ "grade": "C",
+ "single_channel": false,
+ "everyone_types_this": [
+  {
+   "string": "countyLegend",
+   "agents": 24,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "ipeds_tuition_value",
+   "agents": 24,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "zq7Lk2vT9xRw4mPa",
+   "agents": 7,
+   "class": "high-entropy"
+  },
+  {
+   "string": "52e6b438-f2a7-4269-a651-0c5ca6a3a450",
+   "agents": 6,
+   "class": "uuid"
+  },
+  {
+   "string": "20250201000000id_",
+   "agents": 3,
+   "class": "wayback-constructed"
+  }
+ ],
+ "recommendations": [
+  "80% of naive 'same string' matches are shared vocabulary or common values. Do not treat a shared value as copying without its base rate.",
+  "Add version-unique, load-bearing tags (canary tokens) to shared artifacts. A decoration copiers can drop is dropped by some models; a token the link needs to work survives copying (see docs/CANARY.md)."
+ ]
+}

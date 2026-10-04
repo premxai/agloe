@@ -1,0 +1,90 @@
+% Trap Streets for Agent Swarms -- arXiv source.
+% Build the figures, tables and number macros first:   python -m scripts.build_arxiv     (from the repository root)
+% Then compile:   cd arxiv && tectonic main.tex      or      latexmk -pdf main.tex
+% Everything in red brackets, \ph{...}, is a placeholder to fill before submission (see TODO_BEFORE_ARXIV.md).
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{1.2em}
+\renewcommand{\arraystretch}{1.12}
+
+% ---- placeholders and shorthand
+\newcommand{\ph}[1]{{\color{red}[#1]}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\Pr}{\mathbb{P}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\Cz}{C_0}
+\newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ }
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\input{numbers}   % number macros generated from the result files
+
+\title{Trap Streets for Agent Swarms:\\[3pt]\large Making Copying Confess When Reads Go Unlogged}
+\author{%
+  \ph{Author One}\thanks{\ph{Affiliation, city, country. Email.}} \and
+  \ph{Author Two}\thanks{\ph{Affiliation, city, country. Email.}}%
+}
+\date{\ph{Month Year}}
+
+\begin{document}
+\maketitle
+
+\input{sections/abstract}
+
+\input{sections/01-intro}
+\input{sections/02-related}
+\input{sections/03-problem}
+\input{sections/04-theory}
+\input{sections/05-system}
+\input{sections/06-setup}
+\input{sections/07-results}
+\input{sections/08-problems}
+\input{sections/09-limits}
+\input{sections/10-guidance}
+\input{sections/11-conclusion}
+
+\section*{Availability}
+\textbf{Code} (audit, gateway, benchmark scorer, lab harness, viewer, and a script that rebuilds every figure, table and number in this paper from the result files): \ph{GITHUB-URL}. \textbf{Data} (the benchmark with its hidden answer key, the lab run records and the analysis outputs): \ph{HUGGING-FACE-DATASET-URL}. \textbf{Archived release:} \ph{ZENODO-DOI}. \textbf{Licenses:} code \ph{CODE-LICENSE}, data \ph{DATA-LICENSE}. The real-incident logs and the AI Village dataset are not redistributed (Section~\ref{sec:ethics}); aggregates only.
+
+\section*{Acknowledgments}
+\ph{Thanks to the organisers of the event during which this work was done, to the AI Village team at AI Digest for the dataset, and to the inference provider for credits. Add funding and conflicts of interest here.}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\appendix
+\input{sections/A-proofs}
+\input{sections/B-audit}
+\input{sections/C-benchmark}
+\input{sections/D-tables}
+\input{sections/E-prompts}
+\input{sections/F-checklist}
+
+\end{document}

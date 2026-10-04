@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Benchmark baselines on 150 tagged lab runs (95\% bootstrap intervals over runs).}\label{tab:bench}
+\begin{tabular}{@{}L{4.4cm}C{1.9cm}C{1.9cm}C{1.9cm}C{1.9cm}C{1.9cm}@{}}
+\toprule
+Method & Top-1 (copying agents) & Recall & False accusation & Bad-tip precision & Bad-tip recall \\
+\midrule
+random earlier writer & 11.1\%\newline{\scriptsize[9.2--13.0]} & 99\%\newline{\scriptsize[98--99]} & 82.1\%\newline{\scriptsize[75.3--88.5]} & 45\%\newline{\scriptsize[2--88]} & 23\%\newline{\scriptsize[1--61]} \\
+latest writer & 14.6\%\newline{\scriptsize[7.2--23.7]} & 99\%\newline{\scriptsize[98--99]} & 82.1\%\newline{\scriptsize[75.3--88.5]} & 53\%\newline{\scriptsize[12--100]} & 7\%\newline{\scriptsize[1--20]} \\
+earliest writer & 35.3\%\newline{\scriptsize[28.5--42.3]} & 99\%\newline{\scriptsize[98--99]} & 82.1\%\newline{\scriptsize[75.3--88.5]} & 86\%\newline{\scriptsize[55--100]} & 87\%\newline{\scriptsize[59--100]} \\
+name a source only if unambiguous & 0.8\%\newline{\scriptsize[0.3--1.4]} & 1\%\newline{\scriptsize[0--1]} & 6.2\%\newline{\scriptsize[3.9--9.5]} & 100\% & 3\%\newline{\scriptsize[1--9]} \\
+token, else the unambiguous rule & 70.5\%\newline{\scriptsize[62.5--77.1]} & 72\%\newline{\scriptsize[65--79]} & 6.7\%\newline{\scriptsize[4.3--10.0]} & 100\% & 76\%\newline{\scriptsize[47--99]} \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.96\linewidth}{\footnotesize Top-1: copying agents whose immediate source is named correctly. False accusation: agents that worked alone but were blamed on someone; the first three rules name a source whenever any earlier writer posted the same link, so their rate is high by construction. Bad-tip columns: the outputs the planted tip reached, found by following the predicted sources back to it. A value without an interval did not vary across runs.}
+\end{table*}

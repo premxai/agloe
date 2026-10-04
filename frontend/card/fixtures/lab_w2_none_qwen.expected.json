@@ -1,0 +1,35 @@
+{
+ "events": 59,
+ "agents": 31,
+ "channels": 1,
+ "distinct_shared_strings": 2,
+ "naive_copy_calls": 45,
+ "calibrated_copy_calls": 0,
+ "declined_as_coincidence": 45,
+ "carrier_coverage": 0.0,
+ "carrier_coverage_ci95": [
+  0.0,
+  0.0
+ ],
+ "best_possible_top1": 0.0,
+ "naive_coverage": 1.0,
+ "grade": "N/A",
+ "single_channel": true,
+ "everyone_types_this": [
+  {
+   "string": "county_stats",
+   "agents": 31,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "median_rent_2021",
+   "agents": 16,
+   "class": "shared-vocabulary"
+  }
+ ],
+ "recommendations": [
+  "No distinctive string is shared between agents (every repeated string is common vocabulary), so copying cannot be traced from content at all. Shared artifacts need unique, load-bearing tags before an audit can say anything.",
+  "100% of naive 'same string' matches are shared vocabulary or common values. Do not treat a shared value as copying without its base rate.",
+  "Add version-unique, load-bearing tags (canary tokens) to shared artifacts. A decoration copiers can drop is dropped by some models; a token the link needs to work survives copying (see docs/CANARY.md)."
+ ]
+}

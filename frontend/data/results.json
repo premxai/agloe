@@ -1,0 +1,3514 @@
+{
+ "generated_from": "computed outputs; see docs/RESULTS.md",
+ "incident": {
+  "best_top1": 0.162,
+  "no_carrier": 0.56,
+  "adopters": 2976,
+  "behaviors": 35
+ },
+ "coincidence": {
+  "naive_calls": 1001,
+  "supported_calls": 385
+ },
+ "cross_team": {
+  "naive": 23,
+  "verified": 3,
+  "rejected": 20
+ },
+ "ai_village_full": {
+  "pre_rooms": {
+   "windows": 47,
+   "adoptions": 10880,
+   "covered": 10880,
+   "rate": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ],
+   "windows_used_for_spread": 22,
+   "window_min": 1.0,
+   "window_median": 1.0,
+   "window_max": 1.0
+  },
+  "room_scoped": {
+   "windows": 30,
+   "adoptions": 16274,
+   "covered": 15781,
+   "rate": 0.97,
+   "ci95": [
+    0.967,
+    0.972
+   ],
+   "windows_used_for_spread": 30,
+   "window_min": 0.849,
+   "window_median": 0.984,
+   "window_max": 1.0
+  },
+  "showcased": [
+   {
+    "name": "owasp-juice-shop",
+    "start": "2026-01-12",
+    "end": "2026-01-23",
+    "rooms": false,
+    "adoptions": 1955,
+    "rate": 1.0,
+    "percentile_in_regime": 1.0
+   },
+   {
+    "name": "rpg-saboteur",
+    "start": "2026-03-05",
+    "end": "2026-03-16",
+    "rooms": true,
+    "adoptions": 2018,
+    "rate": 0.983,
+    "percentile_in_regime": 0.47
+   },
+   {
+    "name": "interact-outside-village",
+    "start": "2026-03-23",
+    "end": "2026-03-30",
+    "rooms": true,
+    "adoptions": 1052,
+    "rate": 0.874,
+    "percentile_in_regime": 0.03
+   },
+   {
+    "name": "beat-hardest-game",
+    "start": "2026-06-23",
+    "end": "2026-06-29",
+    "rooms": true,
+    "adoptions": 64,
+    "rate": 0.984,
+    "percentile_in_regime": 0.5
+   }
+  ],
+  "messages": 173493,
+  "agents": 46,
+  "first_day": "2025-04-02",
+  "last_day": "2026-09-18",
+  "rooms_cutover": "2026-02-25"
+ },
+ "ladder": [
+  {
+   "label": "Hidden reads (the incident)",
+   "value": 0.2,
+   "text": "16\u201320%",
+   "note": "collusion.wiki: marker strings whose earlier writer was visible (RESULTS \u00a7F)"
+  },
+  {
+   "label": "Room-scoped chat (AI Village, every week)",
+   "value": 0.97,
+   "text": "97%",
+   "note": "16,274 copy events over 30 weeks; the lowest week was 85%"
+  },
+  {
+   "label": "One shared chat (AI Village, every week before rooms)",
+   "value": 1.0,
+   "text": "100%",
+   "note": "10,880 copy events over 47 weeks"
+  }
+ ],
+ "spend": {
+  "lab_agent_runs": 7265,
+  "lab_cells": 231,
+  "bench_cells": 187,
+  "lab_usd": 66.87
+ },
+ "design": {
+  "worlds": [
+   {
+    "world": "FP",
+    "what": "no wiki; independent agents; we record the 'random' values each model adds to a URL",
+    "cells": 24,
+    "agent_runs": 720,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Hermes-4-405B",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Nemotron-3-super",
+     "Qwen3-235B",
+     "gpt-oss-120B"
+    ],
+    "conds": [
+     "none"
+    ],
+    "sizes": [
+     30
+    ],
+    "seeds": 3,
+    "usd": 3.47,
+    "max_calls": 8
+   },
+   {
+    "world": "W1",
+    "what": "a shared wiki; agents route around a 'down' data server and share working links",
+    "cells": 66,
+    "agent_runs": 2090,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Hermes-4-405B",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Nemotron-3-super",
+     "Qwen3-235B",
+     "gpt-oss-120B"
+    ],
+    "conds": [
+     "none",
+     "inert",
+     "loadbearing"
+    ],
+    "sizes": [
+     10,
+     30,
+     100
+    ],
+    "seeds": 10,
+    "usd": 10.21,
+    "max_calls": 16
+   },
+   {
+    "world": "W2",
+    "what": "W1 plus a team-notes page; a bad tip appears on it after 5 agents have submitted, and the stale mirror it points to gives no warning",
+    "cells": 62,
+    "agent_runs": 1860,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Hermes-4-405B",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Nemotron-3-super",
+     "Qwen3-235B",
+     "Qwen3.5-397B",
+     "gpt-oss-120B"
+    ],
+    "conds": [
+     "none",
+     "inert",
+     "loadbearing"
+    ],
+    "sizes": [
+     30
+    ],
+    "seeds": 10,
+    "usd": 17.54,
+    "max_calls": 16
+   },
+   {
+    "world": "W2E",
+    "what": "like W2, but the bad tip is there from the start",
+    "cells": 44,
+    "agent_runs": 1320,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Hermes-4-405B",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Nemotron-3-super",
+     "Qwen3-235B",
+     "gpt-oss-120B"
+    ],
+    "conds": [
+     "none",
+     "inert",
+     "loadbearing"
+    ],
+    "sizes": [
+     30
+    ],
+    "seeds": 10,
+    "usd": 11.91,
+    "max_calls": 16
+   },
+   {
+    "world": "W3",
+    "what": "like W2, with agents from all eight model families in one wiki",
+    "cells": 15,
+    "agent_runs": 675,
+    "families": [
+     "mixed (all 8)"
+    ],
+    "conds": [
+     "none",
+     "inert",
+     "loadbearing"
+    ],
+    "sizes": [
+     45
+    ],
+    "seeds": 5,
+    "usd": 10.64,
+    "max_calls": 16
+   },
+   {
+    "world": "W4",
+    "what": "a coordinator posts a working link; the mirror still hands a session to anyone, so agents can find their own way in",
+    "cells": 10,
+    "agent_runs": 300,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Qwen3-235B"
+    ],
+    "conds": [
+     "loadbearing"
+    ],
+    "sizes": [
+     30
+    ],
+    "seeds": 2,
+    "usd": 6.67,
+    "max_calls": 16
+   },
+   {
+    "world": "W4G",
+    "what": "like W4, but the mirror hands out nothing: the only way in is a link the wiki served",
+    "cells": 10,
+    "agent_runs": 300,
+    "families": [
+     "DeepSeek-V4-Pro",
+     "GLM-5.2",
+     "Kimi-K3",
+     "MiniMax-M3",
+     "Qwen3-235B"
+    ],
+    "conds": [
+     "loadbearing"
+    ],
+    "sizes": [
+     30
+    ],
+    "seeds": 2,
+    "usd": 6.43,
+    "max_calls": 16
+   }
+  ],
+  "smoke_runs_excluded": 14,
+  "flawed_designs_set_aside": 2,
+  "totals": {
+   "cells": 231,
+   "agent_runs": 7265,
+   "usd": 66.87
+  }
+ },
+ "lab": {
+  "H1": {
+   "by_family": {
+    "deepseek": {
+     "loadbearing": {
+      "rate": 0.358,
+      "lo": 0.236,
+      "hi": 0.486,
+      "seeds": 6,
+      "den": 148
+     },
+     "inert": {
+      "rate": 0.116,
+      "lo": 0.015,
+      "hi": 0.257,
+      "seeds": 4,
+      "den": 69
+     },
+     "pass": false
+    },
+    "glm": {
+     "loadbearing": {
+      "rate": 0.09,
+      "lo": 0.029,
+      "hi": 0.143,
+      "seeds": 6,
+      "den": 156
+     },
+     "inert": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 2,
+      "den": 2
+     },
+     "pass": null
+    },
+    "gptoss": {
+     "loadbearing": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "inert": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "pass": null
+    },
+    "hermes": {
+     "loadbearing": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 6,
+      "den": 35
+     },
+     "inert": {
+      "rate": 0.929,
+      "lo": 0.833,
+      "hi": 1.0,
+      "seeds": 3,
+      "den": 14
+     },
+     "pass": false
+    },
+    "kimi": {
+     "loadbearing": {
+      "rate": 0.176,
+      "lo": 0.019,
+      "hi": 0.429,
+      "seeds": 6,
+      "den": 159
+     },
+     "inert": {
+      "rate": 0.038,
+      "lo": 0.0,
+      "hi": 0.103,
+      "seeds": 4,
+      "den": 52
+     },
+     "pass": false
+    },
+    "minimax": {
+     "loadbearing": {
+      "rate": 0.293,
+      "lo": 0.211,
+      "hi": 0.366,
+      "seeds": 6,
+      "den": 147
+     },
+     "inert": {
+      "rate": 0.279,
+      "lo": 0.241,
+      "hi": 0.328,
+      "seeds": 4,
+      "den": 61
+     },
+     "pass": false
+    },
+    "nemotron": {
+     "loadbearing": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "inert": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "pass": null
+    },
+    "qwen": {
+     "loadbearing": {
+      "rate": 0.999,
+      "lo": 0.997,
+      "hi": 1.0,
+      "seeds": 38,
+      "den": 1110
+     },
+     "inert": {
+      "rate": 0.949,
+      "lo": 0.908,
+      "hi": 0.981,
+      "seeds": 30,
+      "den": 802
+     },
+     "pass": false
+    },
+    "qwen35": {
+     "loadbearing": {
+      "rate": 0.82,
+      "lo": 0.72,
+      "hi": 0.92,
+      "seeds": 2,
+      "den": 50
+     },
+     "inert": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "pass": null
+    }
+   },
+   "families_tested": 5,
+   "families_passing": 0,
+   "by_world": {
+    "W1": {
+     "inert": {
+      "rate": 0.79,
+      "lo": 0.599,
+      "hi": 0.919,
+      "seeds": 19,
+      "den": 347
+     },
+     "loadbearing": {
+      "rate": 0.834,
+      "lo": 0.681,
+      "hi": 0.939,
+      "seeds": 28,
+      "den": 755
+     }
+    },
+    "W2": {
+     "inert": {
+      "rate": 0.717,
+      "lo": 0.525,
+      "hi": 0.872,
+      "seeds": 18,
+      "den": 353
+     },
+     "loadbearing": {
+      "rate": 0.648,
+      "lo": 0.461,
+      "hi": 0.831,
+      "seeds": 22,
+      "den": 509
+     }
+    },
+    "W2E": {
+     "inert": {
+      "rate": 0.913,
+      "lo": 0.84,
+      "hi": 0.97,
+      "seeds": 10,
+      "den": 300
+     },
+     "loadbearing": {
+      "rate": 0.672,
+      "lo": 0.489,
+      "hi": 0.844,
+      "seeds": 21,
+      "den": 542
+     }
+    }
+   }
+  },
+  "H2": {
+   "by_family": {
+    "deepseek": {
+     "lift_points": {
+      "rate": 0.162,
+      "lo": 0.086,
+      "hi": 0.257,
+      "seeds": 6,
+      "den": 148
+     },
+     "lift_vs_latest": {
+      "rate": 0.804,
+      "lo": 0.614,
+      "hi": 0.932,
+      "seeds": 6,
+      "den": 148
+     },
+     "with_tags": {
+      "rate": 0.885,
+      "lo": 0.77,
+      "hi": 0.98,
+      "seeds": 6,
+      "den": 148
+     },
+     "edit_log_only": {
+      "rate": 0.723,
+      "lo": 0.536,
+      "hi": 0.87,
+      "seeds": 6,
+      "den": 148
+     },
+     "edit_log_latest": {
+      "rate": 0.081,
+      "lo": 0.038,
+      "hi": 0.155,
+      "seeds": 6,
+      "den": 148
+     },
+     "edit_log_earliest": {
+      "rate": 0.723,
+      "lo": 0.536,
+      "hi": 0.87,
+      "seeds": 6,
+      "den": 148
+     }
+    },
+    "glm": {
+     "lift_points": {
+      "rate": -0.006,
+      "lo": -0.036,
+      "hi": 0.02,
+      "seeds": 6,
+      "den": 156
+     },
+     "lift_vs_latest": {
+      "rate": 0.737,
+      "lo": 0.496,
+      "hi": 0.961,
+      "seeds": 6,
+      "den": 156
+     },
+     "with_tags": {
+      "rate": 0.788,
+      "lo": 0.547,
+      "hi": 0.974,
+      "seeds": 6,
+      "den": 156
+     },
+     "edit_log_only": {
+      "rate": 0.795,
+      "lo": 0.553,
+      "hi": 0.975,
+      "seeds": 6,
+      "den": 156
+     },
+     "edit_log_latest": {
+      "rate": 0.051,
+      "lo": 0.007,
+      "hi": 0.124,
+      "seeds": 6,
+      "den": 156
+     },
+     "edit_log_earliest": {
+      "rate": 0.795,
+      "lo": 0.553,
+      "hi": 0.975,
+      "seeds": 6,
+      "den": 156
+     }
+    },
+    "gptoss": {
+     "lift_points": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "lift_vs_latest": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "with_tags": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "edit_log_only": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "edit_log_latest": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     },
+     "edit_log_earliest": {
+      "rate": null,
+      "lo": null,
+      "hi": null,
+      "seeds": 0,
+      "den": 0
+     }
+    },
+    "hermes": {
+     "lift_points": {
+      "rate": 0.571,
+      "lo": 0.345,
+      "hi": 0.737,
+      "seeds": 6,
+      "den": 35
+     },
+     "lift_vs_latest": {
+      "rate": 0.629,
+      "lo": 0.458,
+      "hi": 0.745,
+      "seeds": 6,
+      "den": 35
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 6,
+      "den": 35
+     },
+     "edit_log_only": {
+      "rate": 0.429,
+      "lo": 0.263,
+      "hi": 0.655,
+      "seeds": 6,
+      "den": 35
+     },
+     "edit_log_latest": {
+      "rate": 0.371,
+      "lo": 0.255,
+      "hi": 0.542,
+      "seeds": 6,
+      "den": 35
+     },
+     "edit_log_earliest": {
+      "rate": 0.343,
+      "lo": 0.167,
+      "hi": 0.609,
+      "seeds": 6,
+      "den": 35
+     }
+    },
+    "kimi": {
+     "lift_points": {
+      "rate": 0.082,
+      "lo": 0.006,
+      "hi": 0.195,
+      "seeds": 6,
+      "den": 159
+     },
+     "lift_vs_latest": {
+      "rate": 0.818,
+      "lo": 0.643,
+      "hi": 0.982,
+      "seeds": 6,
+      "den": 159
+     },
+     "with_tags": {
+      "rate": 0.83,
+      "lo": 0.653,
+      "hi": 0.994,
+      "seeds": 6,
+      "den": 159
+     },
+     "edit_log_only": {
+      "rate": 0.748,
+      "lo": 0.467,
+      "hi": 0.976,
+      "seeds": 6,
+      "den": 159
+     },
+     "edit_log_latest": {
+      "rate": 0.013,
+      "lo": 0.0,
+      "hi": 0.037,
+      "seeds": 6,
+      "den": 159
+     },
+     "edit_log_earliest": {
+      "rate": 0.748,
+      "lo": 0.467,
+      "hi": 0.976,
+      "seeds": 6,
+      "den": 159
+     }
+    },
+    "minimax": {
+     "lift_points": {
+      "rate": 0.177,
+      "lo": 0.112,
+      "hi": 0.267,
+      "seeds": 6,
+      "den": 147
+     },
+     "lift_vs_latest": {
+      "rate": 0.837,
+      "lo": 0.681,
+      "hi": 0.955,
+      "seeds": 6,
+      "den": 147
+     },
+     "with_tags": {
+      "rate": 0.884,
+      "lo": 0.741,
+      "hi": 0.987,
+      "seeds": 6,
+      "den": 147
+     },
+     "edit_log_only": {
+      "rate": 0.707,
+      "lo": 0.477,
+      "hi": 0.854,
+      "seeds": 6,
+      "den": 147
+     },
+     "edit_log_latest": {
+      "rate": 0.048,
+      "lo": 0.026,
+      "hi": 0.069,
+      "seeds": 6,
+      "den": 147
+     },
+     "edit_log_earliest": {
+      "rate": 0.707,
+      "lo": 0.477,
+      "hi": 0.854,
+      "seeds": 6,
+      "den": 147
+     }
+    },
+    "nemotron": {
+     "lift_points": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "lift_vs_latest": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "edit_log_only": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "edit_log_latest": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 1,
+      "den": 1
+     },
+     "edit_log_earliest": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 1,
+      "den": 1
+     }
+    },
+    "qwen": {
+     "lift_points": {
+      "rate": 0.577,
+      "lo": 0.416,
+      "hi": 0.739,
+      "seeds": 38,
+      "den": 1110
+     },
+     "lift_vs_latest": {
+      "rate": 0.732,
+      "lo": 0.543,
+      "hi": 0.919,
+      "seeds": 38,
+      "den": 1110
+     },
+     "with_tags": {
+      "rate": 0.992,
+      "lo": 0.982,
+      "hi": 0.999,
+      "seeds": 38,
+      "den": 1110
+     },
+     "edit_log_only": {
+      "rate": 0.415,
+      "lo": 0.253,
+      "hi": 0.575,
+      "seeds": 38,
+      "den": 1110
+     },
+     "edit_log_latest": {
+      "rate": 0.26,
+      "lo": 0.07,
+      "hi": 0.45,
+      "seeds": 38,
+      "den": 1110
+     },
+     "edit_log_earliest": {
+      "rate": 0.126,
+      "lo": 0.068,
+      "hi": 0.207,
+      "seeds": 38,
+      "den": 1110
+     }
+    },
+    "qwen35": {
+     "lift_points": {
+      "rate": 0.68,
+      "lo": 0.52,
+      "hi": 0.84,
+      "seeds": 2,
+      "den": 50
+     },
+     "lift_vs_latest": {
+      "rate": 0.98,
+      "lo": 0.96,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 50
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 50
+     },
+     "edit_log_only": {
+      "rate": 0.32,
+      "lo": 0.16,
+      "hi": 0.48,
+      "seeds": 2,
+      "den": 50
+     },
+     "edit_log_latest": {
+      "rate": 0.02,
+      "lo": 0.0,
+      "hi": 0.04,
+      "seeds": 2,
+      "den": 50
+     },
+     "edit_log_earliest": {
+      "rate": 0.32,
+      "lo": 0.16,
+      "hi": 0.48,
+      "seeds": 2,
+      "den": 50
+     }
+    }
+   },
+   "all": {
+    "lift_points": {
+     "rate": 0.419,
+     "lo": 0.311,
+     "hi": 0.526,
+     "seeds": 71,
+     "den": 1806
+    },
+    "lift_vs_latest": {
+     "rate": 0.759,
+     "lo": 0.625,
+     "hi": 0.871,
+     "seeds": 71,
+     "den": 1806
+    }
+   },
+   "by_world": {
+    "W1": {
+     "lift_points": {
+      "rate": 0.293,
+      "lo": 0.128,
+      "hi": 0.48,
+      "seeds": 28,
+      "den": 755
+     },
+     "lift_vs_latest": {
+      "rate": 0.509,
+      "lo": 0.294,
+      "hi": 0.745,
+      "seeds": 28,
+      "den": 755
+     },
+     "with_tags": {
+      "rate": 0.889,
+      "lo": 0.787,
+      "hi": 0.957,
+      "seeds": 28,
+      "den": 755
+     },
+     "edit_log_only": {
+      "rate": 0.596,
+      "lo": 0.405,
+      "hi": 0.776,
+      "seeds": 28,
+      "den": 755
+     },
+     "edit_log_latest": {
+      "rate": 0.38,
+      "lo": 0.124,
+      "hi": 0.617,
+      "seeds": 28,
+      "den": 755
+     },
+     "edit_log_earliest": {
+      "rate": 0.181,
+      "lo": 0.081,
+      "hi": 0.342,
+      "seeds": 28,
+      "den": 755
+     }
+    },
+    "W2": {
+     "lift_points": {
+      "rate": 0.559,
+      "lo": 0.393,
+      "hi": 0.723,
+      "seeds": 22,
+      "den": 509
+     },
+     "lift_vs_latest": {
+      "rate": 0.957,
+      "lo": 0.935,
+      "hi": 0.976,
+      "seeds": 22,
+      "den": 509
+     },
+     "with_tags": {
+      "rate": 0.996,
+      "lo": 0.99,
+      "hi": 1.0,
+      "seeds": 22,
+      "den": 509
+     },
+     "edit_log_only": {
+      "rate": 0.437,
+      "lo": 0.271,
+      "hi": 0.604,
+      "seeds": 22,
+      "den": 509
+     },
+     "edit_log_latest": {
+      "rate": 0.039,
+      "lo": 0.022,
+      "hi": 0.059,
+      "seeds": 22,
+      "den": 509
+     },
+     "edit_log_earliest": {
+      "rate": 0.42,
+      "lo": 0.248,
+      "hi": 0.593,
+      "seeds": 22,
+      "den": 509
+     }
+    },
+    "W2E": {
+     "lift_points": {
+      "rate": 0.463,
+      "lo": 0.289,
+      "hi": 0.627,
+      "seeds": 21,
+      "den": 542
+     },
+     "lift_vs_latest": {
+      "rate": 0.923,
+      "lo": 0.891,
+      "hi": 0.946,
+      "seeds": 21,
+      "den": 542
+     },
+     "with_tags": {
+      "rate": 0.969,
+      "lo": 0.949,
+      "hi": 0.986,
+      "seeds": 21,
+      "den": 542
+     },
+     "edit_log_only": {
+      "rate": 0.506,
+      "lo": 0.348,
+      "hi": 0.675,
+      "seeds": 21,
+      "den": 542
+     },
+     "edit_log_latest": {
+      "rate": 0.046,
+      "lo": 0.029,
+      "hi": 0.07,
+      "seeds": 21,
+      "den": 542
+     },
+     "edit_log_earliest": {
+      "rate": 0.502,
+      "lo": 0.342,
+      "hi": 0.672,
+      "seeds": 21,
+      "den": 542
+     }
+    }
+   }
+  },
+  "H3": {
+   "families_scored": [
+    "deepseek",
+    "glm",
+    "kimi"
+   ],
+   "within_family": {
+    "deepseek": 0.364,
+    "glm": 0.614,
+    "kimi": 0.61
+   },
+   "cross_matrix": {
+    "deepseek|glm": 0.495,
+    "deepseek|kimi": 0.457,
+    "glm|kimi": 0.61
+   },
+   "mean_within": 0.529,
+   "mean_cross": 0.521,
+   "diff_ci95": [
+    -0.003,
+    0.128
+   ],
+   "min_values": 10,
+   "adoption_rate": {
+    "deepseek": 0.133,
+    "glm": 0.2,
+    "gptoss": 0.0,
+    "hermes": 0.0,
+    "kimi": 0.8,
+    "minimax": 0.044,
+    "nemotron": 0.0,
+    "qwen": 0.0
+   },
+   "top_values": {
+    "deepseek": [
+     [
+      "bust=1",
+      7
+     ],
+     [
+      "nocache=1",
+      3
+     ],
+     [
+      "v=2",
+      1
+     ]
+    ],
+    "glm": [
+     [
+      "bust=1",
+      14
+     ],
+     [
+      "nocache=1",
+      3
+     ],
+     [
+      "cachebust=1",
+      1
+     ]
+    ],
+    "kimi": [
+     [
+      "bust=1",
+      56
+     ],
+     [
+      "cachebust=1",
+      6
+     ],
+     [
+      "cb=1",
+      3
+     ]
+    ],
+    "minimax": [
+     [
+      "bust=1",
+      2
+     ],
+     [
+      "bust=2024",
+      1
+     ],
+     [
+      "ts=2024",
+      1
+     ]
+    ]
+   }
+  },
+  "H4": {
+   "W2|none": {
+    "seeds": 12,
+    "spread_rate": {
+     "rate": 0.006,
+     "lo": 0.0,
+     "hi": 0.017,
+     "seeds": 12,
+     "den": 360
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 1,
+     "den": 2
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 1,
+     "den": 2
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 1,
+     "den": 2
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 1,
+     "den": 2
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 1,
+       "den": 3
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 1,
+       "den": 3
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 1,
+       "den": 3
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 1,
+       "den": 3
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 1,
+       "den": 2
+      },
+      "recall": {
+       "rate": 0.667,
+       "lo": 0.667,
+       "hi": 0.667,
+       "seeds": 1,
+       "den": 3
+      }
+     }
+    }
+   },
+   "W2|inert": {
+    "seeds": 24,
+    "spread_rate": {
+     "rate": 0.114,
+     "lo": 0.02,
+     "hi": 0.218,
+     "seeds": 24,
+     "den": 710
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 8,
+     "den": 81
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 0.247,
+     "lo": 0.138,
+     "hi": 0.824,
+     "seeds": 8,
+     "den": 81
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.049,
+     "lo": 0.016,
+     "hi": 0.147,
+     "seeds": 8,
+     "den": 81
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 0.247,
+     "lo": 0.138,
+     "hi": 0.824,
+     "seeds": 8,
+     "den": 81
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 81
+      },
+      "recall": {
+       "rate": 0.835,
+       "lo": 0.484,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 97
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": 0.889,
+       "lo": 0.8,
+       "hi": 1.0,
+       "seeds": 3,
+       "den": 9
+      },
+      "recall": {
+       "rate": 0.082,
+       "lo": 0.009,
+       "hi": 0.266,
+       "seeds": 8,
+       "den": 97
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 0.989,
+       "lo": 0.967,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 88
+      },
+      "recall": {
+       "rate": 0.897,
+       "lo": 0.684,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 97
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 0.988,
+       "lo": 0.963,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 81
+      },
+      "recall": {
+       "rate": 0.825,
+       "lo": 0.463,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 97
+      }
+     }
+    }
+   },
+   "W2|loadbearing": {
+    "seeds": 26,
+    "spread_rate": {
+     "rate": 0.117,
+     "lo": 0.034,
+     "hi": 0.223,
+     "seeds": 26,
+     "den": 744
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 6,
+     "den": 47
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 0.362,
+     "lo": 0.186,
+     "hi": 0.909,
+     "seeds": 6,
+     "den": 47
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.043,
+     "lo": 0.0,
+     "hi": 0.364,
+     "seeds": 6,
+     "den": 47
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 0.362,
+     "lo": 0.186,
+     "hi": 0.909,
+     "seeds": 6,
+     "den": 47
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 6,
+       "den": 15
+      },
+      "recall": {
+       "rate": 0.5,
+       "lo": 0.394,
+       "hi": 1.0,
+       "seeds": 6,
+       "den": 30
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 1,
+       "den": 1
+      },
+      "recall": {
+       "rate": 0.033,
+       "lo": 0.0,
+       "hi": 0.333,
+       "seeds": 6,
+       "den": 30
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 0.612,
+       "lo": 0.174,
+       "hi": 0.989,
+       "seeds": 7,
+       "den": 49
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 6,
+       "den": 30
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 0.345,
+       "lo": 0.05,
+       "hi": 0.857,
+       "seeds": 8,
+       "den": 87
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 6,
+       "den": 30
+      }
+     }
+    }
+   },
+   "W2E|none": {
+    "seeds": 10,
+    "spread_rate": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      }
+     }
+    }
+   },
+   "W2E|inert": {
+    "seeds": 10,
+    "spread_rate": {
+     "rate": 0.993,
+     "lo": 0.983,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 300
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 0.99,
+     "lo": 0.98,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 298
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 0.248,
+     "lo": 0.197,
+     "hi": 0.318,
+     "seeds": 10,
+     "den": 298
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.034,
+     "lo": 0.02,
+     "hi": 0.047,
+     "seeds": 10,
+     "den": 298
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 0.248,
+     "lo": 0.197,
+     "hi": 0.318,
+     "seeds": 10,
+     "den": 298
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 244
+      },
+      "recall": {
+       "rate": 0.813,
+       "lo": 0.62,
+       "hi": 0.96,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 298
+      },
+      "recall": {
+       "rate": 0.993,
+       "lo": 0.983,
+       "hi": 1.0,
+       "seeds": 10,
+       "den": 300
+      }
+     }
+    }
+   },
+   "W2E|loadbearing": {
+    "seeds": 24,
+    "spread_rate": {
+     "rate": 0.607,
+     "lo": 0.446,
+     "hi": 0.77,
+     "seeds": 24,
+     "den": 684
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": 0.976,
+     "lo": 0.952,
+     "hi": 0.996,
+     "seeds": 20,
+     "den": 380
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": 0.345,
+     "lo": 0.24,
+     "hi": 0.504,
+     "seeds": 20,
+     "den": 380
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": 0.058,
+     "lo": 0.035,
+     "hi": 0.096,
+     "seeds": 20,
+     "den": 380
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": 0.339,
+     "lo": 0.233,
+     "hi": 0.497,
+     "seeds": 20,
+     "den": 380
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 20,
+       "den": 338
+      },
+      "recall": {
+       "rate": 0.667,
+       "lo": 0.462,
+       "hi": 0.855,
+       "seeds": 21,
+       "den": 507
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 8,
+       "den": 17
+      },
+      "recall": {
+       "rate": 0.034,
+       "lo": 0.012,
+       "hi": 0.066,
+       "seeds": 21,
+       "den": 507
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 21,
+       "den": 507
+      },
+      "recall": {
+       "rate": 1.0,
+       "lo": 1.0,
+       "hi": 1.0,
+       "seeds": 21,
+       "den": 507
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 0.916,
+       "lo": 0.77,
+       "hi": 1.0,
+       "seeds": 21,
+       "den": 415
+      },
+      "recall": {
+       "rate": 0.75,
+       "lo": 0.558,
+       "hi": 0.916,
+       "seeds": 21,
+       "den": 507
+      }
+     }
+    }
+   },
+   "W3|none": {
+    "seeds": 5,
+    "spread_rate": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 5,
+     "den": 215
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     }
+    }
+   },
+   "W3|inert": {
+    "seeds": 5,
+    "spread_rate": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 5,
+     "den": 215
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     }
+    }
+   },
+   "W3|loadbearing": {
+    "seeds": 5,
+    "spread_rate": {
+     "rate": 0.041,
+     "lo": 0.021,
+     "hi": 0.054,
+     "seeds": 5,
+     "den": 194
+    },
+    "contaminated_attribution_with_tags": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_latest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "contaminated_attribution_edit_log_earliest": {
+     "rate": null,
+     "lo": null,
+     "hi": null,
+     "seeds": 0,
+     "den": 0
+    },
+    "forward_trace": {
+     "tags": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "edit_log_earliest": {
+      "precision": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     },
+     "output": {
+      "precision": {
+       "rate": 0.0,
+       "lo": 0.0,
+       "hi": 0.0,
+       "seeds": 4,
+       "den": 8
+      },
+      "recall": {
+       "rate": null,
+       "lo": null,
+       "hi": null,
+       "seeds": 0,
+       "den": 0
+      }
+     }
+    }
+   }
+  },
+  "fingerprint_attribution": {
+   "accuracy": 0.297,
+   "chance": 0.125,
+   "per_held_out_seed": {
+    "1": 0.287,
+    "2": 0.325,
+    "3": 0.279
+   },
+   "n_test": 720,
+   "recall_by_family": {
+    "deepseek": 0.444,
+    "glm": 0.033,
+    "gptoss": 0.367,
+    "hermes": 0.167,
+    "kimi": 0.667,
+    "minimax": 0.0,
+    "nemotron": 0.344,
+    "qwen": 0.356
+   },
+   "accuracy_when_a_random_value_was_chosen": 0.632,
+   "n_with_value": 106
+  },
+  "size_sweep": {
+   "10": {
+    "tag_survival": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 25
+    },
+    "with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 25
+    },
+    "edit_log_latest": {
+     "rate": 0.28,
+     "lo": 0.0,
+     "hi": 0.68,
+     "seeds": 5,
+     "den": 25
+    },
+    "copy_share": {
+     "rate": 0.5,
+     "lo": 0.5,
+     "hi": 0.5,
+     "seeds": 5,
+     "den": 50
+    }
+   },
+   "30": {
+    "tag_survival": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 250
+    },
+    "with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 10,
+     "den": 250
+    },
+    "edit_log_latest": {
+     "rate": 0.28,
+     "lo": 0.024,
+     "hi": 0.56,
+     "seeds": 10,
+     "den": 250
+    },
+    "copy_share": {
+     "rate": 0.833,
+     "lo": 0.833,
+     "hi": 0.833,
+     "seeds": 10,
+     "den": 300
+    }
+   },
+   "100": {
+    "tag_survival": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 3,
+     "den": 285
+    },
+    "with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 3,
+     "den": 285
+    },
+    "edit_log_latest": {
+     "rate": 0.667,
+     "lo": 0.0,
+     "hi": 1.0,
+     "seeds": 3,
+     "den": 285
+    },
+    "copy_share": {
+     "rate": 0.95,
+     "lo": 0.95,
+     "hi": 0.95,
+     "seeds": 3,
+     "den": 300
+    }
+   }
+  },
+  "mixed_swarm": {
+   "none": {
+    "seeds": 5,
+    "cross_family_copy_share": {
+     "rate": 0.989,
+     "lo": 0.968,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 92
+    },
+    "tag_survival": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 5,
+     "den": 92
+    },
+    "attribution_with_tags": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 92
+    },
+    "attribution_edit_log": {
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.0,
+     "seeds": 5,
+     "den": 92
+    },
+    "by_family": {
+     "deepseek": {
+      "submitted": 27,
+      "stale": 0,
+      "copied": 24,
+      "stale_rate": 0.0
+     },
+     "glm": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 3,
+      "stale_rate": 0.0
+     },
+     "gptoss": {
+      "submitted": 27,
+      "stale": 0,
+      "copied": 0,
+      "stale_rate": 0.0
+     },
+     "hermes": {
+      "submitted": 21,
+      "stale": 0,
+      "copied": 5,
+      "stale_rate": 0.0
+     },
+     "kimi": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 19,
+      "stale_rate": 0.0
+     },
+     "minimax": {
+      "submitted": 25,
+      "stale": 0,
+      "copied": 15,
+      "stale_rate": 0.0
+     },
+     "nemotron": {
+      "submitted": 25,
+      "stale": 0,
+      "copied": 0,
+      "stale_rate": 0.0
+     },
+     "qwen": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 26,
+      "stale_rate": 0.0
+     }
+    }
+   },
+   "inert": {
+    "seeds": 5,
+    "cross_family_copy_share": {
+     "rate": 1.0,
+     "lo": 1.0,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 75
+    },
+    "tag_survival": {
+     "rate": 0.187,
+     "lo": 0.116,
+     "hi": 0.244,
+     "seeds": 5,
+     "den": 75
+    },
+    "attribution_with_tags": {
+     "rate": 0.987,
+     "lo": 0.964,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 75
+    },
+    "attribution_edit_log": {
+     "rate": 0.04,
+     "lo": 0.012,
+     "hi": 0.068,
+     "seeds": 5,
+     "den": 75
+    },
+    "by_family": {
+     "deepseek": {
+      "submitted": 23,
+      "stale": 0,
+      "copied": 19,
+      "stale_rate": 0.0
+     },
+     "glm": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 1,
+      "stale_rate": 0.0
+     },
+     "gptoss": {
+      "submitted": 29,
+      "stale": 0,
+      "copied": 0,
+      "stale_rate": 0.0
+     },
+     "hermes": {
+      "submitted": 23,
+      "stale": 0,
+      "copied": 6,
+      "stale_rate": 0.0
+     },
+     "kimi": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 12,
+      "stale_rate": 0.0
+     },
+     "minimax": {
+      "submitted": 25,
+      "stale": 0,
+      "copied": 12,
+      "stale_rate": 0.0
+     },
+     "nemotron": {
+      "submitted": 25,
+      "stale": 0,
+      "copied": 0,
+      "stale_rate": 0.0
+     },
+     "qwen": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 25,
+      "stale_rate": 0.0
+     }
+    }
+   },
+   "loadbearing": {
+    "seeds": 5,
+    "cross_family_copy_share": {
+     "rate": 0.945,
+     "lo": 0.875,
+     "hi": 0.992,
+     "seeds": 5,
+     "den": 128
+    },
+    "tag_survival": {
+     "rate": 0.195,
+     "lo": 0.162,
+     "hi": 0.234,
+     "seeds": 5,
+     "den": 128
+    },
+    "attribution_with_tags": {
+     "rate": 0.984,
+     "lo": 0.968,
+     "hi": 1.0,
+     "seeds": 5,
+     "den": 128
+    },
+    "attribution_edit_log": {
+     "rate": 0.062,
+     "lo": 0.046,
+     "hi": 0.079,
+     "seeds": 5,
+     "den": 128
+    },
+    "by_family": {
+     "deepseek": {
+      "submitted": 19,
+      "stale": 0,
+      "copied": 25,
+      "stale_rate": 0.0
+     },
+     "glm": {
+      "submitted": 29,
+      "stale": 0,
+      "copied": 25,
+      "stale_rate": 0.0
+     },
+     "gptoss": {
+      "submitted": 27,
+      "stale": 0,
+      "copied": 0,
+      "stale_rate": 0.0
+     },
+     "hermes": {
+      "submitted": 22,
+      "stale": 0,
+      "copied": 3,
+      "stale_rate": 0.0
+     },
+     "kimi": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 25,
+      "stale_rate": 0.0
+     },
+     "minimax": {
+      "submitted": 25,
+      "stale": 0,
+      "copied": 24,
+      "stale_rate": 0.0
+     },
+     "nemotron": {
+      "submitted": 12,
+      "stale": 8,
+      "copied": 1,
+      "stale_rate": 0.667
+     },
+     "qwen": {
+      "submitted": 30,
+      "stale": 0,
+      "copied": 25,
+      "stale_rate": 0.0
+     }
+    }
+   }
+  },
+  "strong_model": {
+   "qwen35": {
+    "none": {
+     "stale": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 2,
+      "den": 50
+     }
+    },
+    "loadbearing": {
+     "stale": {
+      "rate": 0.367,
+      "lo": 0.0,
+      "hi": 0.733,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.82,
+      "lo": 0.72,
+      "hi": 0.92,
+      "seeds": 2,
+      "den": 50
+     }
+    }
+   },
+   "qwen": {
+    "none": {
+     "stale": {
+      "rate": 0.007,
+      "lo": 0.0,
+      "hi": 0.02,
+      "seeds": 10,
+      "den": 300
+     },
+     "tag_survival": {
+      "rate": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "seeds": 10,
+      "den": 250
+     }
+    },
+    "loadbearing": {
+     "stale": {
+      "rate": 0.08,
+      "lo": 0.007,
+      "hi": 0.207,
+      "seeds": 10,
+      "den": 300
+     },
+     "tag_survival": {
+      "rate": 0.996,
+      "lo": 0.988,
+      "hi": 1.0,
+      "seeds": 10,
+      "den": 250
+     }
+    }
+   }
+  },
+  "truth_note": "Attribution accuracy is only meaningful where the served copy is unique (inert / load-bearing cells): when several wiki posts carry byte-identical links the true source is not defined by text, so untagged cells are scored by ceiling (1/m) and copy-vs-independent only.",
+  "rumor_by_family": {
+   "deepseek": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 4,
+    "den": 108
+   },
+   "glm": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 4,
+    "den": 114
+   },
+   "gptoss": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 4,
+    "den": 107
+   },
+   "hermes": {
+    "rate": 0.017,
+    "lo": 0.0,
+    "hi": 0.035,
+    "seeds": 4,
+    "den": 115
+   },
+   "kimi": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 4,
+    "den": 119
+   },
+   "minimax": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 4,
+    "den": 116
+   },
+   "nemotron": {
+    "rate": 0.348,
+    "lo": 0.0,
+    "hi": 0.727,
+    "seeds": 4,
+    "den": 115
+   },
+   "qwen": {
+    "rate": 0.173,
+    "lo": 0.063,
+    "hi": 0.302,
+    "seeds": 20,
+    "den": 600
+   },
+   "qwen35": {
+    "rate": 0.367,
+    "lo": 0.0,
+    "hi": 0.733,
+    "seeds": 2,
+    "den": 60
+   }
+  },
+  "early_rumor_by_family": {
+   "deepseek": {
+    "rate": 0.566,
+    "lo": 0.115,
+    "hi": 1.0,
+    "seeds": 2,
+    "den": 53
+   },
+   "glm": {
+    "rate": 0.327,
+    "lo": 0.2,
+    "hi": 0.458,
+    "seeds": 2,
+    "den": 49
+   },
+   "gptoss": {
+    "rate": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "seeds": 2,
+    "den": 53
+   },
+   "hermes": {
+    "rate": 0.182,
+    "lo": 0.179,
+    "hi": 0.185,
+    "seeds": 2,
+    "den": 55
+   },
+   "kimi": {
+    "rate": 0.034,
+    "lo": 0.0,
+    "hi": 0.069,
+    "seeds": 2,
+    "den": 59
+   },
+   "minimax": {
+    "rate": 0.379,
+    "lo": 0.133,
+    "hi": 0.643,
+    "seeds": 2,
+    "den": 58
+   },
+   "nemotron": {
+    "rate": 0.614,
+    "lo": 0.607,
+    "hi": 0.621,
+    "seeds": 2,
+    "den": 57
+   },
+   "qwen": {
+    "rate": 0.998,
+    "lo": 0.994,
+    "hi": 1.0,
+    "seeds": 30,
+    "den": 900
+   },
+   "qwen35": {
+    "rate": null,
+    "lo": null,
+    "hi": null,
+    "seeds": 0,
+    "den": 0
+   }
+  },
+  "gated": {
+   "deepseek": {
+    "W4": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 0.867,
+      "lo": 0.8,
+      "hi": 0.933,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 0.3,
+      "lo": 0.233,
+      "hi": 0.367,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.353,
+      "lo": 0.269,
+      "hi": 0.44,
+      "seeds": 2,
+      "den": 51
+     },
+     "with_tags": {
+      "rate": 0.317,
+      "lo": 0.314,
+      "hi": 0.32,
+      "seeds": 2,
+      "den": 51
+     },
+     "best_edit_log": {
+      "rate": 0.142,
+      "lo": 0.124,
+      "hi": 0.16,
+      "seeds": 2,
+      "den": 51
+     },
+     "copy_share": {
+      "rate": 0.85,
+      "lo": 0.833,
+      "hi": 0.867,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 3.18
+    },
+    "W4G": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 0.883,
+      "lo": 0.8,
+      "hi": 0.967,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 0.683,
+      "lo": 0.667,
+      "hi": 0.7,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 3.13
+    }
+   },
+   "glm": {
+    "W4": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 0.967,
+      "lo": 0.933,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 0.25,
+      "lo": 0.2,
+      "hi": 0.3,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.259,
+      "lo": 0.2,
+      "hi": 0.321,
+      "seeds": 2,
+      "den": 58
+     },
+     "with_tags": {
+      "rate": 0.517,
+      "lo": 0.464,
+      "hi": 0.567,
+      "seeds": 2,
+      "den": 58
+     },
+     "best_edit_log": {
+      "rate": 0.466,
+      "lo": 0.393,
+      "hi": 0.533,
+      "seeds": 2,
+      "den": 58
+     },
+     "copy_share": {
+      "rate": 0.967,
+      "lo": 0.933,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 3.7
+    },
+    "W4G": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 3.47
+    }
+   },
+   "kimi": {
+    "W4": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 0.5,
+      "lo": 0.467,
+      "hi": 0.533,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.5,
+      "lo": 0.467,
+      "hi": 0.533,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 0.514,
+      "lo": 0.495,
+      "hi": 0.532,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 0.217,
+      "lo": 0.2,
+      "hi": 0.233,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 0.85
+    },
+    "W4G": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 0.817,
+      "lo": 0.767,
+      "hi": 0.867,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 0.67
+    }
+   },
+   "minimax": {
+    "W4": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 0.95,
+      "lo": 0.9,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 0.333,
+      "lo": 0.267,
+      "hi": 0.4,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 0.333,
+      "lo": 0.25,
+      "hi": 0.414,
+      "seeds": 2,
+      "den": 57
+     },
+     "with_tags": {
+      "rate": 0.376,
+      "lo": 0.304,
+      "hi": 0.446,
+      "seeds": 2,
+      "den": 57
+     },
+     "best_edit_log": {
+      "rate": 0.175,
+      "lo": 0.172,
+      "hi": 0.179,
+      "seeds": 2,
+      "den": 57
+     },
+     "copy_share": {
+      "rate": 0.966,
+      "lo": 0.966,
+      "hi": 0.967,
+      "seeds": 2,
+      "den": 59
+     },
+     "failed_calls_per_agent": 2.83
+    },
+    "W4G": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 59
+     },
+     "with_tags": {
+      "rate": 0.932,
+      "lo": 0.867,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 59
+     },
+     "best_edit_log": {
+      "rate": 0.475,
+      "lo": 0.31,
+      "hi": 0.633,
+      "seeds": 2,
+      "den": 59
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 59
+     },
+     "failed_calls_per_agent": 2.62
+    }
+   },
+   "qwen": {
+    "W4": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 0.167,
+      "lo": 0.167,
+      "hi": 0.167,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 0.0
+    },
+    "W4G": {
+     "runs": 2,
+     "agents": 60,
+     "completed": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "traceable": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "tag_survival": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "with_tags": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "best_edit_log": {
+      "rate": 0.167,
+      "lo": 0.167,
+      "hi": 0.167,
+      "seeds": 2,
+      "den": 60
+     },
+     "copy_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 2,
+      "den": 60
+     },
+     "failed_calls_per_agent": 0.0
+    }
+   }
+  }
+ },
+ "cleanup": {
+  "W2 tags": {
+   "runs": 50,
+   "outputs": 1454,
+   "reached": 127,
+   "stale": 168,
+   "stale_not_reached": 58,
+   "methods": {
+    "everyone": {
+     "flagged_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 0.087,
+      "lo": 0.029,
+      "hi": 0.156,
+      "seeds": 50,
+      "den": 1454
+     },
+     "bad_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 16,
+      "den": 168
+     }
+    },
+    "after_tip": {
+     "flagged_share": {
+      "rate": 0.828,
+      "lo": 0.825,
+      "hi": 0.83,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 0.105,
+      "lo": 0.035,
+      "hi": 0.188,
+      "seeds": 50,
+      "den": 1204
+     },
+     "bad_found": {
+      "rate": 0.976,
+      "lo": 0.935,
+      "hi": 1.0,
+      "seeds": 16,
+      "den": 168
+     }
+    },
+    "tags": {
+     "flagged_share": {
+      "rate": 0.066,
+      "lo": 0.019,
+      "hi": 0.122,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 0.756,
+      "lo": 0.466,
+      "hi": 0.988,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 96
+     },
+     "bad_found": {
+      "rate": 0.56,
+      "lo": 0.247,
+      "hi": 0.863,
+      "seeds": 16,
+      "den": 168
+     }
+    },
+    "tags+backup": {
+     "flagged_share": {
+      "rate": 0.077,
+      "lo": 0.025,
+      "hi": 0.139,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 0.882,
+      "lo": 0.622,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 112
+     },
+     "bad_found": {
+      "rate": 0.655,
+      "lo": 0.33,
+      "hi": 0.973,
+      "seeds": 16,
+      "den": 168
+     }
+    },
+    "earliest": {
+     "flagged_share": {
+      "rate": 0.094,
+      "lo": 0.035,
+      "hi": 0.162,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 0.921,
+      "lo": 0.769,
+      "hi": 1.0,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 0.854,
+      "lo": 0.567,
+      "hi": 0.992,
+      "seeds": 15,
+      "den": 137
+     },
+     "bad_found": {
+      "rate": 0.762,
+      "lo": 0.429,
+      "hi": 1.0,
+      "seeds": 16,
+      "den": 168
+     }
+    },
+    "latest": {
+     "flagged_share": {
+      "rate": 0.007,
+      "lo": 0.001,
+      "hi": 0.016,
+      "seeds": 50,
+      "den": 1454
+     },
+     "reached_found": {
+      "rate": 0.071,
+      "lo": 0.009,
+      "hi": 0.191,
+      "seeds": 14,
+      "den": 127
+     },
+     "precision": {
+      "rate": 0.9,
+      "lo": 0.812,
+      "hi": 1.0,
+      "seeds": 4,
+      "den": 10
+     },
+     "bad_found": {
+      "rate": 0.054,
+      "lo": 0.006,
+      "hi": 0.144,
+      "seeds": 16,
+      "den": 168
+     }
+    }
+   }
+  },
+  "W2E tags": {
+   "runs": 34,
+   "outputs": 984,
+   "reached": 792,
+   "stale": 713,
+   "stale_not_reached": 35,
+   "methods": {
+    "everyone": {
+     "flagged_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 0.805,
+      "lo": 0.669,
+      "hi": 0.914,
+      "seeds": 34,
+      "den": 984
+     },
+     "bad_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 713
+     }
+    },
+    "after_tip": {
+     "flagged_share": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 0.805,
+      "lo": 0.669,
+      "hi": 0.914,
+      "seeds": 34,
+      "den": 984
+     },
+     "bad_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 713
+     }
+    },
+    "tags": {
+     "flagged_share": {
+      "rate": 0.591,
+      "lo": 0.443,
+      "hi": 0.733,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 0.735,
+      "lo": 0.582,
+      "hi": 0.869,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 30,
+      "den": 582
+     },
+     "bad_found": {
+      "rate": 0.816,
+      "lo": 0.689,
+      "hi": 0.92,
+      "seeds": 31,
+      "den": 713
+     }
+    },
+    "tags+backup": {
+     "flagged_share": {
+      "rate": 0.803,
+      "lo": 0.667,
+      "hi": 0.913,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 0.997,
+      "lo": 0.993,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 790
+     },
+     "bad_found": {
+      "rate": 0.951,
+      "lo": 0.872,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 713
+     }
+    },
+    "earliest": {
+     "flagged_share": {
+      "rate": 0.805,
+      "lo": 0.669,
+      "hi": 0.914,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 792
+     },
+     "bad_found": {
+      "rate": 0.951,
+      "lo": 0.872,
+      "hi": 1.0,
+      "seeds": 31,
+      "den": 713
+     }
+    },
+    "latest": {
+     "flagged_share": {
+      "rate": 0.017,
+      "lo": 0.006,
+      "hi": 0.032,
+      "seeds": 34,
+      "den": 984
+     },
+     "reached_found": {
+      "rate": 0.021,
+      "lo": 0.007,
+      "hi": 0.041,
+      "seeds": 31,
+      "den": 792
+     },
+     "precision": {
+      "rate": 1.0,
+      "lo": 1.0,
+      "hi": 1.0,
+      "seeds": 8,
+      "den": 17
+     },
+     "bad_found": {
+      "rate": 0.024,
+      "lo": 0.008,
+      "hi": 0.047,
+      "seeds": 31,
+      "den": 713
+     }
+    }
+   }
+  }
+ }
+}

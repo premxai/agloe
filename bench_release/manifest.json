@@ -1,0 +1,1498 @@
+[
+ {
+  "cell": "W1-inert-deepseek-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-deepseek-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-glm-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "glm",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-glm-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "glm",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-gptoss-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-gptoss-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-hermes-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "hermes",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-hermes-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "hermes",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-kimi-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "kimi",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-kimi-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "kimi",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-minimax-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "minimax",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-minimax-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "minimax",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-nemotron-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-nemotron-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s1",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s10",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s2",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s3",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s4",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s5",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s6",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s7",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s8",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W1-inert-qwen-n30-s9",
+  "world": "W1",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W1-loadbearing-deepseek-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-deepseek-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-glm-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-glm-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-gptoss-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-gptoss-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-hermes-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-hermes-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-kimi-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-kimi-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-minimax-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-minimax-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-nemotron-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-nemotron-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n10-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 10,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n10-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 10,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n10-s3",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 10,
+  "seed": 3
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n10-s4",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 10,
+  "seed": 4
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n10-s5",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 10,
+  "seed": 5
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n100-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 100,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n100-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 100,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n100-s3",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 100,
+  "seed": 3
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s1",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s10",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s2",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s3",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s4",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s5",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s6",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s7",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s8",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W1-loadbearing-qwen-n30-s9",
+  "world": "W1",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W1-none-qwen-n30-s1",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W1-none-qwen-n30-s10",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W1-none-qwen-n30-s2",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W1-none-qwen-n30-s3",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W1-none-qwen-n30-s4",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W1-none-qwen-n30-s5",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W1-none-qwen-n30-s6",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W1-none-qwen-n30-s7",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W1-none-qwen-n30-s8",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W1-none-qwen-n30-s9",
+  "world": "W1",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2-inert-deepseek-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-deepseek-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-glm-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "glm",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-glm-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "glm",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-gptoss-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-gptoss-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-hermes-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "hermes",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-hermes-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "hermes",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-kimi-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "kimi",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-kimi-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "kimi",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-minimax-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "minimax",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-minimax-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "minimax",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-nemotron-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-nemotron-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s1",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s10",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s2",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s3",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s4",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s5",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s6",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s7",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s8",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2-inert-qwen-n30-s9",
+  "world": "W2",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2-loadbearing-deepseek-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-deepseek-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-glm-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-glm-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-gptoss-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-gptoss-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-hermes-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-hermes-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-kimi-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-kimi-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-minimax-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-minimax-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-nemotron-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-nemotron-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s10",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s3",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s4",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s5",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s6",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s7",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s8",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2-loadbearing-qwen-n30-s9",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2-loadbearing-qwen35-n30-s1",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen35",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-loadbearing-qwen35-n30-s2",
+  "world": "W2",
+  "cond": "loadbearing",
+  "family": "qwen35",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-none-qwen-n30-s1",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-none-qwen-n30-s10",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2-none-qwen-n30-s2",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2-none-qwen-n30-s3",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2-none-qwen-n30-s4",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2-none-qwen-n30-s5",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2-none-qwen-n30-s6",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2-none-qwen-n30-s7",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2-none-qwen-n30-s8",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2-none-qwen-n30-s9",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2-none-qwen35-n30-s1",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen35",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2-none-qwen35-n30-s2",
+  "world": "W2",
+  "cond": "none",
+  "family": "qwen35",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s1",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s10",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s2",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s3",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s4",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s5",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s6",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s7",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s8",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2E-inert-qwen-n30-s9",
+  "world": "W2E",
+  "cond": "inert",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2E-loadbearing-deepseek-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-deepseek-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "deepseek",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-glm-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-glm-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "glm",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-gptoss-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-gptoss-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "gptoss",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-hermes-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-hermes-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "hermes",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-kimi-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-kimi-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "kimi",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-minimax-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-minimax-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "minimax",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-nemotron-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-nemotron-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "nemotron",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s1",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s10",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s2",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s3",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s4",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s5",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s6",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s7",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s8",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2E-loadbearing-qwen-n30-s9",
+  "world": "W2E",
+  "cond": "loadbearing",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s1",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 1
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s10",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 10
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s2",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 2
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s3",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 3
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s4",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 4
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s5",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 5
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s6",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 6
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s7",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 7
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s8",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 8
+ },
+ {
+  "cell": "W2E-none-qwen-n30-s9",
+  "world": "W2E",
+  "cond": "none",
+  "family": "qwen",
+  "n": 30,
+  "seed": 9
+ },
+ {
+  "cell": "W3-inert-mix-n45-s1",
+  "world": "W3",
+  "cond": "inert",
+  "family": "mix",
+  "n": 45,
+  "seed": 1
+ },
+ {
+  "cell": "W3-inert-mix-n45-s2",
+  "world": "W3",
+  "cond": "inert",
+  "family": "mix",
+  "n": 45,
+  "seed": 2
+ },
+ {
+  "cell": "W3-inert-mix-n45-s3",
+  "world": "W3",
+  "cond": "inert",
+  "family": "mix",
+  "n": 45,
+  "seed": 3
+ },
+ {
+  "cell": "W3-inert-mix-n45-s4",
+  "world": "W3",
+  "cond": "inert",
+  "family": "mix",
+  "n": 45,
+  "seed": 4
+ },
+ {
+  "cell": "W3-inert-mix-n45-s5",
+  "world": "W3",
+  "cond": "inert",
+  "family": "mix",
+  "n": 45,
+  "seed": 5
+ },
+ {
+  "cell": "W3-loadbearing-mix-n45-s1",
+  "world": "W3",
+  "cond": "loadbearing",
+  "family": "mix",
+  "n": 45,
+  "seed": 1
+ },
+ {
+  "cell": "W3-loadbearing-mix-n45-s2",
+  "world": "W3",
+  "cond": "loadbearing",
+  "family": "mix",
+  "n": 45,
+  "seed": 2
+ },
+ {
+  "cell": "W3-loadbearing-mix-n45-s3",
+  "world": "W3",
+  "cond": "loadbearing",
+  "family": "mix",
+  "n": 45,
+  "seed": 3
+ },
+ {
+  "cell": "W3-loadbearing-mix-n45-s4",
+  "world": "W3",
+  "cond": "loadbearing",
+  "family": "mix",
+  "n": 45,
+  "seed": 4
+ },
+ {
+  "cell": "W3-loadbearing-mix-n45-s5",
+  "world": "W3",
+  "cond": "loadbearing",
+  "family": "mix",
+  "n": 45,
+  "seed": 5
+ },
+ {
+  "cell": "W3-none-mix-n45-s1",
+  "world": "W3",
+  "cond": "none",
+  "family": "mix",
+  "n": 45,
+  "seed": 1
+ },
+ {
+  "cell": "W3-none-mix-n45-s2",
+  "world": "W3",
+  "cond": "none",
+  "family": "mix",
+  "n": 45,
+  "seed": 2
+ },
+ {
+  "cell": "W3-none-mix-n45-s3",
+  "world": "W3",
+  "cond": "none",
+  "family": "mix",
+  "n": 45,
+  "seed": 3
+ },
+ {
+  "cell": "W3-none-mix-n45-s4",
+  "world": "W3",
+  "cond": "none",
+  "family": "mix",
+  "n": 45,
+  "seed": 4
+ },
+ {
+  "cell": "W3-none-mix-n45-s5",
+  "world": "W3",
+  "cond": "none",
+  "family": "mix",
+  "n": 45,
+  "seed": 5
+ }
+]

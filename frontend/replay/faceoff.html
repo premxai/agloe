@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agloe · Face-Off</title>
+<meta name="description" content="A bad tip spreads through 30 AI agents. Watch two investigators try to trace it from the same records: one with the edit log alone, one with trap-street codes.">
+<link rel="stylesheet" href="replay.css">
+<link rel="stylesheet" href="faceoff.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Agloe · trap streets for AI agent swarms</p>
+    <h1>Same swarm. Two investigators.</h1>
+    <p class="lede">A bad tip spreads through 30 AI agents. Both investigators get the same records. One has the edit log alone; the other can read a secret code that every copied link carries.
+      Real runs from our offline lab, replayed.</p>
+  </header>
+
+  <div class="stage"><canvas id="c" role="img" aria-label="Animation: a bad tip spreads through a swarm of AI agents, and two side-by-side panels show an investigator using the edit log alone naming few sources correctly, and an investigator using trap-street codes naming them all. The facts are listed below the animation."></canvas></div>
+
+  <div class="playbar">
+    <button id="play" aria-label="Play or pause">Pause</button>
+    <button id="clip" title="Records the whole story and downloads a video you can post">Make a clip</button>
+    <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Time">
+    <span id="clock" class="muted"></span>
+  </div>
+
+  <section class="stats" id="facts" aria-live="polite" aria-label="The facts shown in the animation"></section>
+  <p class="muted small">Space pauses, left and right arrows jump. These are real runs of an offline lab (no real systems): AI agents search a wiki for a data mirror and share links.
+    “Who copied whom” comes from the lab's hidden read log, which no real investigator has. The first run is the best case for the codes (Qwen3-235B copies links exactly);
+    other models skip the code more often, see <a href="../#tags">the model-by-model chart</a>.
+    <a href="./">Explore the swarms one view at a time →</a> · <a href="../card/">Run the report card on your own swarm →</a></p>
+</main>
+<script type="module" src="faceoff.js"></script>
+</body>
+</html>

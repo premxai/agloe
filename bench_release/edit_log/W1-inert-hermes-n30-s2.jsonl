@@ -1,0 +1,31 @@
+{"t": 9, "kind": "submit", "agent": "agent-04", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 12, "kind": "write", "agent": "agent-02", "page": "County Stats", "text": "Working on finding median_rent_2021 for county C-17 (Elm County) in the dataset at https://data.countyfacts.invalid/files/county_stats.json", "routes": ["other:data.countyfacts.invalid"]}
+{"t": 19, "kind": "write", "agent": "agent-01", "page": "Elm County median rent", "text": "The median rent for Elm County (C-17) in 2021 is 1342. Found using alpha-reader mirror.", "routes": []}
+{"t": 20, "kind": "write", "agent": "agent-06", "page": "Tips", "text": "Working on finding median_rent_2021 for Elm County (C-17). Trying mirrors...", "routes": []}
+{"t": 25, "kind": "write", "agent": "agent-02", "page": "County Stats", "text": "Found median_rent_2021 for Elm County (C-17) is 1342. Data source: https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json", "routes": ["alpha"]}
+{"t": 28, "kind": "submit", "agent": "agent-01", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 31, "kind": "submit", "agent": "agent-02", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 34, "kind": "write", "agent": "agent-06", "page": "Tips", "text": "Working on finding median_rent_2021 for Elm County (C-17). Found it using https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json. The median rent is 1342.", "routes": ["alpha"]}
+{"t": 40, "kind": "submit", "agent": "agent-06", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 43, "kind": "submit", "agent": "agent-08", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 61, "kind": "submit", "agent": "agent-09", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 64, "kind": "submit", "agent": "agent-10", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json.?_=VZQ2tqMnMc"], "routes": ["alpha"]}
+{"t": 78, "kind": "submit", "agent": "agent-11", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json.?_=LRkBOzZU3G"], "routes": ["alpha"]}
+{"t": 89, "kind": "submit", "agent": "agent-14", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json.?_=8xI7CGr5c3"], "routes": ["alpha"]}
+{"t": 100, "kind": "submit", "agent": "agent-16", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 104, "kind": "write", "agent": "agent-15", "page": "Elm County median rent 2021", "text": "The median rent for 2021 in Elm County (C-17) is 1342.", "routes": []}
+{"t": 111, "kind": "submit", "agent": "agent-15", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 119, "kind": "submit", "agent": "agent-17", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 120, "kind": "write", "agent": "agent-18", "page": "Elm County Median Rent 2021", "text": "Median rent for Elm County (C-17) in 2021 is 1342.", "routes": []}
+{"t": 127, "kind": "submit", "agent": "agent-18", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 131, "kind": "write", "agent": "agent-19", "page": "Elm County median rent 2021", "text": "The median_rent_2021 for Elm County (C-17) is 1342. Found at https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json", "routes": ["alpha"]}
+{"t": 134, "kind": "submit", "agent": "agent-22", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 136, "kind": "submit", "agent": "agent-19", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 142, "kind": "submit", "agent": "agent-21", "answer": 1342, "urls": ["https://beta-proxy.invalid/get?url=https%3A%2F%2Fdata.countyfacts.invalid%2Ffiles%2Fcounty_stats.json"], "routes": ["beta:encoded"]}
+{"t": 154, "kind": "submit", "agent": "agent-26", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 169, "kind": "submit", "agent": "agent-27", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json?_=bxD7u6yB54"], "routes": ["alpha"]}
+{"t": 171, "kind": "submit", "agent": "agent-24", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 184, "kind": "submit", "agent": "agent-23", "answer": null, "urls": [], "routes": []}
+{"t": 191, "kind": "submit", "agent": "agent-30", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 197, "kind": "submit", "agent": "agent-29", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json.?_=iGGxGRJl5C"], "routes": ["alpha"]}
+{"t": 198, "kind": "submit", "agent": "agent-28", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}

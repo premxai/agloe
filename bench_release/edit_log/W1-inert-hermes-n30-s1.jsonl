@@ -1,0 +1,22 @@
+{"t": 9, "kind": "submit", "agent": "agent-01", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 11, "kind": "submit", "agent": "agent-02", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 14, "kind": "write", "agent": "agent-03", "page": "Elm_County", "text": "Elm County median_rent_2021: 1342", "routes": []}
+{"t": 19, "kind": "submit", "agent": "agent-06", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 21, "kind": "submit", "agent": "agent-03", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 22, "kind": "submit", "agent": "agent-07", "answer": 1342, "urls": [], "routes": []}
+{"t": 34, "kind": "submit", "agent": "agent-09", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 37, "kind": "submit", "agent": "agent-10", "answer": 1342, "urls": ["https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["other:data.countyfacts.invalid"]}
+{"t": 69, "kind": "submit", "agent": "agent-08", "answer": -1, "urls": [], "routes": []}
+{"t": 91, "kind": "write", "agent": "agent-14", "page": "Elm_County_median_rent_2021", "text": "Median rent for Elm County (C-17) in 2021 is 1342.", "routes": []}
+{"t": 97, "kind": "submit", "agent": "agent-14", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 102, "kind": "submit", "agent": "agent-13", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 110, "kind": "submit", "agent": "agent-16", "answer": 1342, "urls": [], "routes": []}
+{"t": 116, "kind": "submit", "agent": "agent-17", "answer": 1342, "urls": [], "routes": []}
+{"t": 124, "kind": "submit", "agent": "agent-19", "answer": 1342, "urls": ["https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["other:data.countyfacts.invalid"]}
+{"t": 126, "kind": "submit", "agent": "agent-21", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 133, "kind": "write", "agent": "agent-20", "page": "Elm_County_Rent_2021", "text": "Median rent for Elm County (C-17) in 2021 is 1342. Source: https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json", "routes": ["alpha"]}
+{"t": 136, "kind": "submit", "agent": "agent-23", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 141, "kind": "submit", "agent": "agent-20", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 154, "kind": "submit", "agent": "agent-26", "answer": 1342, "urls": ["https://read.alpha-reader.invalid/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["alpha"]}
+{"t": 155, "kind": "submit", "agent": "agent-25", "answer": 1342, "urls": [], "routes": []}
+{"t": 168, "kind": "submit", "agent": "agent-28", "answer": 1342, "urls": [], "routes": []}

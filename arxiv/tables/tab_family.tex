@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Tag survival and attribution by model (load-bearing runs; models with at least 20 copying agents).}\label{tab:family}
+\begin{tabular}{@{}lrC{1.9cm}C{1.9cm}C{1.9cm}C{1.9cm}r@{}}
+\toprule
+Model & Copies & Inert tag kept & Token kept & Best edit-log rule & Token, else that rule & Lift (pts) \\
+\midrule
+Qwen3-235B & 1{,}110 & 95\%\newline{\scriptsize[91--98]} & 100\% & 42\%\newline{\scriptsize[25--57]} & 99\%\newline{\scriptsize[98--100]} & +58 \\
+Qwen3.5-397B & 50 & n/a & 82\%\newline{\scriptsize[72--92]} & 32\%\newline{\scriptsize[16--48]} & 100\% & +68 \\
+Hermes-4-405B & 35 & 93\%\newline{\scriptsize[83--100]} & 100\% & 43\%\newline{\scriptsize[26--66]} & 100\% & +57 \\
+DeepSeek-V4-Pro & 148 & 12\%\newline{\scriptsize[2--26]} & 36\%\newline{\scriptsize[24--49]} & 72\%\newline{\scriptsize[54--87]} & 88\%\newline{\scriptsize[77--98]} & +16 \\
+MiniMax-M3 & 147 & 28\%\newline{\scriptsize[24--33]} & 29\%\newline{\scriptsize[21--37]} & 71\%\newline{\scriptsize[48--85]} & 88\%\newline{\scriptsize[74--99]} & +18 \\
+Kimi-K3 & 159 & 4\%\newline{\scriptsize[0--10]} & 18\%\newline{\scriptsize[2--43]} & 75\%\newline{\scriptsize[47--98]} & 83\%\newline{\scriptsize[65--99]} & +8 \\
+GLM-5.2 & 156 & n/a & 9\%\newline{\scriptsize[3--14]} & 80\%\newline{\scriptsize[55--98]} & 79\%\newline{\scriptsize[55--97]} & $-$1 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.96\linewidth}{\footnotesize Copies: copying agents in the load-bearing runs. Bracketed values are 95\% bootstrap intervals over runs. The best edit-log rule is the best of latest, earliest and random writer for each run, chosen with the answer key in hand. Models with too few copying agents are in Appendix~\ref{app:tables}. A value without an interval did not vary across runs.}
+\end{table*}

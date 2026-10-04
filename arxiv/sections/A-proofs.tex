@@ -1,0 +1,32 @@
+\section{Proofs}\label{app:proofs}
+
+\paragraph{Setting.}
+Fix an adopting agent. Let $S$ be its immediate source, taking values in the finite set $\mathcal{S}$ of earlier agents (or ``none'' for an agent that worked alone), and let $L$ be everything the tracer is allowed to see for it (the edit log, plus read events or tokens where a proposition says so). The joint law of $(S,L)$ is induced by the copy process (how adopters choose among earlier posts) and the logging process (what is recorded). A tracer is a measurable map $\hat S=g(L,U)$, where $U$ is internal randomness independent of $(S,L)$. We write $\pi_s(l)=\Pr[S=s\mid L=l]$.
+
+\paragraph{Proof of Proposition~\ref{prop:ceiling}.}
+For fixed $l$ and $u$, $g(l,u)$ is a fixed element of $\mathcal{S}$, so $\Pr[g(L,U)=S\mid L=l,U=u]=\pi_{g(l,u)}(l)\le\max_s\pi_s(l)$. Averaging over $U$ and then over $L$ gives $\Pr[\hat S=S]\le\E[\max_s\pi_s(L)]$. Equality holds for $g(l,u)\in\arg\max_s\pi_s(l)$. \qed
+
+\paragraph{Proof of Corollary~\ref{cor:uniform}.}
+Suppose the log's law conditional on $S=s$ is the same for the $m$ candidates $s\in M$ (they are indistinguishable) and $S$ is uniform on $M$. Bayes' rule gives $\pi_s(l)=\Pr[l\mid s]\,\Pr[s]\big/\sum_{s'\in M}\Pr[l\mid s']\Pr[s']=1/m$ for $s\in M$, so $\max_s\pi_s=1/m$. \qed
+
+\paragraph{Proof of Proposition~\ref{prop:reads}.}
+Let $G\in\{0,1\}$ indicate that the item-level read of the adoption is logged, with $\Pr[G=1]=\rho$ and $G$ independent of $(S,E)$, where $E$ is the edit-log part of $L$. On $\{G=1\}$ the log contains the served copy, hence $S$, so the conditional accuracy of the MAP tracer is $1$. On $\{G=0\}$ the tracer sees only $E$; by independence the conditional law of $(S,E)$ given $G=0$ equals its unconditional law, so the best conditional accuracy is $\Cz=\E[\max_s\Pr[S=s\mid E]]$ (Proposition~\ref{prop:ceiling} for the edit log alone). By the law of total probability the best overall accuracy is $\rho\cdot1+(1-\rho)\Cz$. \qed
+
+\paragraph{Proof of Proposition~\ref{prop:tags}.}
+Let $G$ indicate that the output reveals a token, independent of $(S,E)$ with $\Pr[G=1]=s$. For a version-unique token, the registry maps the token to exactly one served copy and hence to its author, which is $S$ by Definition~\ref{def:copy}; so accuracy on $\{G=1\}$ is $1$, and the argument of Proposition~\ref{prop:reads} applies with $\rho=s$. For an origin or page token $T$, let $L'=(E,T)$ on $\{G=1\}$; Proposition~\ref{prop:ceiling} applied to $L'$ gives accuracy $\E[\max_s\Pr[S=s\mid E,T]]$ there, which is at most $1$, with equality iff the posterior is a point mass for almost every $(E,T)$, \ie iff every origin or page has a single candidate. The overall ceiling is $s\,\E[\max_s\pi_s(E,T)]+(1-s)\Cz$. \qed
+
+\paragraph{Proof of Proposition~\ref{prop:calib}.}
+Two independent agents choose $v$ with probability $p_v^2$, so they choose the same value with probability $\sum_vp_v^2=c$, and the naive detector, which flags every match, has false-flag probability $c$. Suppose copying reproduces the chosen value with probability one; then the likelihood ratio of ``copied'' to ``independent'' for a match on $v$ is $1/p_v$, and the calibrated detector flags a match iff $1/p_v\ge\tau$, \ie $p_v\le1/\tau$. Its false-flag probability for independent agents is therefore
+\[
+\sum_{v:\ p_v\le1/\tau}p_v^2\ \le\ \frac1\tau\sum_{v:\ p_v\le1/\tau}p_v\ \le\ \frac1\tau,
+\]
+where the first step uses $p_v\le1/\tau$ for each term and the last uses $\sum_vp_v\le1$. For a detector that tests $k$ attributes, the union bound gives at most $k/\tau$. If $p$ is replaced by an estimate $\hat p$, the bound holds with $1/\tau$ replaced by $\max_v(p_v/\hat p_v)/\tau$ over the flagged values, \ie it degrades gracefully with the relative error of the base rate. \qed
+
+\paragraph{Proof of Proposition~\ref{prop:gate}.}
+\emph{(a)} Each serving mints a fresh token and writes $R[\tau]$ once, so $R$ is a function on its domain; with tokens drawn uniformly from a space of size $N_\tau$, the probability that any two of $n$ minted tokens collide is at most $n^2/(2N_\tau)$, which is negligible for the sizes in use (about $10^{-7}$ for 700 tokens of 8 characters over 36 symbols). An accepted request carries some $\tau\in\mathrm{dom}(R)$, hence resolves to one entry. \emph{(b)} By the closure assumption tokens are issued only by serving, and \textsc{Serve} replaces any token already present in a link, so a token that appears in a request was minted for a particular reader's serving of a particular chunk. The entry records the author of that chunk, which is the immediate source of Definition~\ref{def:copy} for an agent that used the link it was served. \emph{(c)} If the output reports the request, the token is in the output, so the survival probability of Proposition~\ref{prop:tags} is $1$, and the ceiling for these adoptions is $s+(1-s)\Cz=1$. The caveats follow from the construction: facts learned from a served copy and used without a gated request carry no token, and an agent that reports a different link from the one it used is attributed to the one it reported. \qed
+
+\paragraph{Proof of Proposition~\ref{prop:depth}.}
+Let $D$ be the depth of a uniformly chosen affected output and $q\in(0,1)$ the per-edge recovery probability. Independence of edge recoveries gives $\Pr[\text{found}\mid D=d]=q^d$ for a single path, so recall is $\E[q^D]$. The function $x\mapsto q^x$ is convex, so Jensen's inequality gives $\E[q^D]\ge q^{\E[D]}$. \qed
+
+\paragraph{Remark on the benchmark metric.}
+The benchmark reports $\mathrm{top1}/\E[1/m]$ as ``versus the uniform ceiling''. By Corollary~\ref{cor:uniform} the denominator is the ceiling for copiers that choose uniformly among identical posts; tracers that exploit copier habits or read tokens can exceed it, so values above one are expected and the metric is not an upper bound.

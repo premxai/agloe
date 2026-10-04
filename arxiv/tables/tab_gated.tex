@@ -1,0 +1,27 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Closing the other way in. Open: the mirror hands a session to anyone. Gated: access only through links the wiki served.}\label{tab:gated}
+\begin{tabular}{@{}llC{2.3cm}C{2.3cm}C{2.3cm}C{2.0cm}@{}}
+\toprule
+Model & World & Right answer & Output carries its token & Source named, with token & Refused calls per agent \\
+\midrule
+GLM-5.2 & open & 97\%\newline{\scriptsize[93--100]} & 25\%\newline{\scriptsize[20--30]} & 52\%\newline{\scriptsize[46--57]} & 3.7 \\
+ & gated & 100\% & 100\% & 100\% & 3.5 \\
+\addlinespace[3pt]
+DeepSeek-V4-Pro & open & 87\%\newline{\scriptsize[80--93]} & 30\%\newline{\scriptsize[23--37]} & 32\%\newline{\scriptsize[31--32]} & 3.2 \\
+ & gated & 100\% & 100\% & 88\%\newline{\scriptsize[80--97]} & 3.1 \\
+\addlinespace[3pt]
+MiniMax-M3 & open & 95\%\newline{\scriptsize[90--100]} & 33\%\newline{\scriptsize[27--40]} & 38\%\newline{\scriptsize[30--45]} & 2.8 \\
+ & gated & 100\% & 100\% & 93\%\newline{\scriptsize[87--100]} & 2.6 \\
+\addlinespace[3pt]
+Kimi-K3 & open & 100\% & 50\%\newline{\scriptsize[47--53]} & 51\%\newline{\scriptsize[50--53]} & 0.8 \\
+ & gated & 100\% & 100\% & 100\% & 0.7 \\
+\addlinespace[3pt]
+Qwen3-235B & open & 100\% & 100\% & 100\% & 0.0 \\
+ & gated & 100\% & 100\% & 100\% & 0.0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.96\linewidth}{\footnotesize Each world has two runs of 30 agents per model. In the gated world every output that exists holds a token the wiki served to that agent; the source is named correctly less than 100\% of the time because an agent sometimes reports a different link from the one it first fetched. A value without an interval did not vary across runs.}
+\end{table*}

@@ -1,0 +1,10 @@
+{"agent": "agent-01", "copied": false, "parent": null, "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-02", "copied": false, "parent": null, "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-03", "copied": false, "parent": null, "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-04", "copied": false, "parent": null, "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-05", "copied": false, "parent": null, "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-06", "copied": true, "parent": "agent-01", "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-07", "copied": true, "parent": "agent-01", "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-08", "copied": true, "parent": "agent-01", "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-09", "copied": true, "parent": "agent-01", "route": "alpha+session", "answered_stale": false}
+{"agent": "agent-10", "copied": true, "parent": "agent-01", "route": "alpha+session", "answered_stale": false}

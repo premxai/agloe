@@ -1,0 +1,7 @@
+/* Face-Off page: reuses the replay palette; the animation itself is one 16:9 canvas so it can be projected or recorded as is. */
+main { max-width: 1180px; }
+.stage { background: #060403; }
+.stage canvas { height: auto; aspect-ratio: 16 / 9; }
+#facts .stat .num { font-size: 26px; }
+#facts .stat.good .num { color: var(--ok); }
+#facts .stat.bad .num { color: var(--bad); }

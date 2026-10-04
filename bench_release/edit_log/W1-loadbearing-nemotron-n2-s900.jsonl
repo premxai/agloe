@@ -1,0 +1,2 @@
+{"t": 23, "kind": "submit", "agent": "agent-01", "answer": 1290, "urls": ["https://delta-cache.invalid/s/m2xwy7h3/https%3A//data.countyfacts.invalid/files/county_stats.json"], "routes": ["delta+session"]}
+{"t": 24, "kind": "submit", "agent": "agent-02", "answer": 1290, "urls": ["https://delta-cache.invalid/s/gv15bvdd/fetch/https://data.countyfacts.invalid/files/county_stats.json"], "routes": ["delta+session"]}

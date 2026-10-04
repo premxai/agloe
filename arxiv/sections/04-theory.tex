@@ -1,0 +1,59 @@
+\section{Theory: what logs can and cannot recover}\label{sec:theory}
+
+This section states what can be recovered, how to call copying without being fooled, and what a gateway guarantees. Proofs are short; Appendix~\ref{app:proofs} spells out the assumptions. Throughout, $S$ is the (unknown) immediate source of an adopting agent, $L$ is everything the tracer is allowed to see for that agent, and $\pi_s(L)=\Pr[S=s\mid L]$ is the posterior over earlier agents $s$.
+
+\begin{proposition}[Ceiling]\label{prop:ceiling}
+For any tracer, $\Pr[\hat S(L)=S]\le \E\big[\max_s \pi_s(L)\big]$, with equality for the maximum-a-posteriori tracer. The expectation is over the copy process and the logging process.
+\end{proposition}
+\begin{proof}
+Given $L$, a tracer's guess $\hat S(L)$ is independent of $S$, so $\Pr[\hat S=S\mid L]=\pi_{\hat S(L)}(L)\le\max_s\pi_s(L)$. Take expectations over $L$; the bound is attained by choosing an $\arg\max$.
+\end{proof}
+\begin{corollary}[Identical posts]\label{cor:uniform}
+If an adopter chose uniformly among $m$ earlier posts that the log cannot tell apart, then $\pi_s=1/m$ and the ceiling is $\E[1/m]$ over adopters.
+\end{corollary}
+Corollary~\ref{cor:uniform} is the no-habit case. A tracer that knows copiers' habits (they take the first link, or the newest) can exceed it, and the benchmark metric defined from it (Appendix~\ref{app:bench}) is therefore not an upper bound for such tracers. The ceiling is a property of the \emph{log and the copy process}, not of the tracer: no better tracer can exist, so ``untraceable from these logs'' is a finding.
+
+\begin{proposition}[Reads]\label{prop:reads}
+Let $\Cz$ be the ceiling of Proposition~\ref{prop:ceiling} from the edit log alone. Suppose the item-level read is logged for a random share $\rho$ of adoptions, independently of the source chosen, and a logged read identifies the served copy. Then the ceiling is $\rho+(1-\rho)\Cz$.
+\end{proposition}
+\begin{proof}
+Condition on whether an adoption's read is logged. Logged adoptions are identified exactly (accuracy 1). For unlogged ones, independence means the tracer faces the original problem, with best accuracy $\Cz$. Weight by $\rho$ and $1-\rho$.
+\end{proof}
+A read that names the page but not the item helps much less: in our simulator, logging the page for every copy lifts the ceiling from $0.46$ only to $0.57$, so the recommendation is to log the \emph{item} that was read (Table~\ref{tab:sim} and Section~\ref{sec:res-sim}).
+
+\begin{proposition}[Tokens]\label{prop:tags}
+Suppose each served copy of a link carries a token unique to that copy (a \emph{version-unique} token) and a registry maps it to the served copy. If an adopter's output reveals a token with probability $s$, independently of the source chosen, the ceiling is $s+(1-s)\Cz$. If tokens name an \emph{origin} (one token per original item) or a \emph{page}, a revealed token only narrows the candidates to the origin's writers or the page's writers; the ceiling is then $s\,\E[\max_s\pi_s(L,T)]+(1-s)\Cz$, which is below $s+(1-s)\Cz$ unless every origin or page has a single candidate.
+\end{proposition}
+\begin{proof}
+A revealed version-unique token resolves to one served copy, hence to its author, so those adoptions are identified exactly; the rest are as in Proposition~\ref{prop:reads} with $\rho=s$. For an origin or page token, apply Proposition~\ref{prop:ceiling} to the log enlarged by the token.
+\end{proof}
+The proposition predicts that the gain from tokens is proportional to the survival rate $s$ and to the headroom $1-\Cz$. Section~\ref{sec:res-attr} tests exactly this, and Section~\ref{sec:res-sim} confirms the formula to within $0.008$ in a simulator.
+
+\begin{proposition}[Calibration]\label{prop:calib}
+Let independent agents each choose a value of an attribute (a URL parameter, a field name, an identifier) from the same distribution $p$ over values; $p_v$ is the base rate of $v$ and $c=\sum_v p_v^2$ is the collision probability. A \emph{naive} detector flags two agents as copying when they chose the same value. A \emph{calibrated} detector with threshold $\tau>1$ flags them only if they chose the same $v$ and $p_v\le 1/\tau$, \ie when the likelihood ratio of ``copied'' to ``independent'', $1/p_v$, is at least $\tau$. For two independent agents,
+\[
+\Pr[\text{naive flags}]=c,\qquad \Pr[\text{calibrated flags}]=\sum_{v:\,p_v\le 1/\tau}p_v^2\ \le\ \frac1\tau .
+\]
+\end{proposition}
+\begin{proof}
+Both agents choose $v$ with probability $p_v^2$, so the naive rate is $\sum_v p_v^2$. For the calibrated rate, $\sum_{p_v\le1/\tau}p_v^2\le\frac1\tau\sum_{p_v\le 1/\tau}p_v\le\frac1\tau$.
+\end{proof}
+Monoculture, the tendency of agents of the same model to choose alike, drives $c$ towards $1$ and the naive false-call rate with it, while the calibrated rate stays below $1/\tau$ whatever $c$ is. The price is recall: copying that rides on a common value cannot be told from coincidence and is declined. The bound is per pair; testing $k$ attributes multiplies it by at most $k$ (union bound), and base rates must be estimated, which we do from agents that were first to choose in their structure (Section~\ref{sec:setup}). Figure~\ref{fig:calibration} shows the behaviour in a simulator.
+
+\begin{proposition}[Gateway soundness]\label{prop:gate}
+Let a gateway $G$ serve every shared artifact. For each serving (reader $r$, artifact version $v$, chunk $i$, time $t$) it mints a fresh unguessable token $\tau$, embeds it in each link of that chunk, and records $R[\tau]=(r,v,i,\mathrm{author}_i,t)$. Resource servers accept a request only if it carries some $\tau\in\mathrm{dom}(R)$, and tokens are issued only by serving. Then: (a)~every accepted request resolves to exactly one served copy; (b)~if an agent's output reports the request it made, resolving the token in it names the copy the agent was served, hence the author of the chunk it came from, exactly; (c)~for outputs that report the request they made, the survival probability in Proposition~\ref{prop:tags} is $s=1$, so the ceiling is $1$ for the portion of adoptions that go through the gate. Facts an agent learns from a served copy and uses without a gated request are not covered, and an agent that reports a different link from the one it used is attributed to the link it reported.
+\end{proposition}
+\begin{proof}
+(a) Tokens are fresh and recorded once, so $R$ is a function. (b) An accepted request carries some $\tau\in\mathrm{dom}(R)$; because tokens are issued only by serving and re-minted at every serving, $\tau$ was minted for this reader's read of that chunk. (c) A gated output that reports its request reports its token. The restriction in the last sentence is a limit of the design, not of the proof: the gate traces access, not ideas.
+\end{proof}
+
+\begin{proposition}[Depth]\label{prop:depth}
+Suppose each copy edge of a cascade is recovered independently with probability $q$, and an output at depth $d$ is found by the trace only if all $d$ edges on its path are recovered. The recall of the affected set is $\E[q^{d}]\ge q^{\E[d]}$.
+\end{proposition}
+\begin{proof}
+The probability of recovering a depth-$d$ path is $q^d$; $d\mapsto q^d$ is convex for $q\in(0,1)$, so Jensen's inequality gives the bound.
+\end{proof}
+This single-path model is pessimistic where an output has several routes to the origin, but it explains two observations: deep cascades are hard to trace from partial evidence (\eg with $q=0.9$, seven hops leave recall $0.9^7\approx0.48$), and a fallback rule that raises $q$ where a token was lost raises recall (Section~\ref{sec:res-tip}).
+
+\paragraph{What the propositions say in practice.}
+(1)~Log the \emph{item} read, not only the page; each logged share $\rho$ is worth $\rho(1-\Cz)$. (2)~A token is worth its survival rate. (3)~Call copying only against a base rate, and accept the recall that costs. (4)~A gateway that makes the token needed moves $s$ towards $1$ for gated outputs. (5)~Per-edge recovery must be high, or a fallback present, for deep cascades.

@@ -1,0 +1,18 @@
+[
+ {
+  "file": "cleanup_tip_tags.json",
+  "title": "A late bad tip that only a few agents used (Qwen3-235B agents)"
+ },
+ {
+  "file": "early_tip_tags.json",
+  "title": "A bad tip from the start takes over the swarm (Qwen3-235B agents)"
+ },
+ {
+  "file": "late_tip_tags.json",
+  "title": "A bad tip arrives mid-run (Qwen3-235B agents)"
+ },
+ {
+  "file": "no_tip.json",
+  "title": "No bad tip: agents share working links (Qwen3-235B agents)"
+ }
+]

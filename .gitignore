@@ -1,0 +1,40 @@
+# Gated / raw data must never be committed (AI Village terms: research use, no redistribution)
+data/raw/
+data/out/*.sqlite
+.env
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.vercel/
+data/out/
+# lab runs (transcripts, worlds, spend); a curated subset is exported to bench_release/ by scripts/export_bench.py
+data/lab/
+data/mini_swarm/
+.env.*
+!.env.example
+
+# raw-incident material: the collusion.wiki export is marked "draft, do not share". Kept local until the organizers clear it.
+frontend/farm/
+docs/DATA_CHECK.md
+scripts/export_branch.py
+scripts/verify_branch.py
+scripts/probe_bio.py
+/data/
+
+# cards other teams shared with us (aggregates, but not ours to publish until the team agrees)
+/shared_cards/
+
+# a swarm run live on stage lands here; keep it out of the repo and the deploy
+/frontend/replay/data/live.json
+
+# local build tools (a portable TeX engine)
+/tools/
+
+# arXiv build leftovers (main.pdf and main.bbl are kept)
+/arxiv/dist/
+/arxiv/*.aux
+/arxiv/*.log
+/arxiv/*.out
+/arxiv/*.blg
+/arxiv/*.xdv

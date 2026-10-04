@@ -1,0 +1,75 @@
+{
+ "events": 90,
+ "agents": 60,
+ "channels": 40,
+ "distinct_shared_strings": 15,
+ "naive_copy_calls": 165,
+ "calibrated_copy_calls": 16,
+ "declined_as_coincidence": 149,
+ "carrier_coverage": 0.25,
+ "carrier_coverage_ci95": [
+  0.102,
+  0.495
+ ],
+ "best_possible_top1": 0.25,
+ "naive_coverage": 0.212,
+ "grade": "D",
+ "single_channel": false,
+ "everyone_types_this": [
+  {
+   "string": "survey2019data",
+   "agents": 39,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "county_median_rent",
+   "agents": 31,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "legendConfig",
+   "agents": 31,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "stateCodeLookup",
+   "agents": 31,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "table_row_count",
+   "agents": 18,
+   "class": "shared-vocabulary"
+  },
+  {
+   "string": "5puzQqmOBZZW6m4n",
+   "agents": 3,
+   "class": "high-entropy"
+  },
+  {
+   "string": "6nVberACpdclsxHK",
+   "agents": 3,
+   "class": "high-entropy"
+  },
+  {
+   "string": "6uniiFw152cTe8r0",
+   "agents": 3,
+   "class": "high-entropy"
+  },
+  {
+   "string": "Er7n1AyOHFRuT11N",
+   "agents": 3,
+   "class": "high-entropy"
+  },
+  {
+   "string": "Fq5axtjRNmHkW5vQ",
+   "agents": 3,
+   "class": "high-entropy"
+  }
+ ],
+ "recommendations": [
+  "75% of real copies have no visible source in the channel where they reappear: agents read from places you do not log. Log item-level reads (who read which page/message, when).",
+  "90% of naive 'same string' matches are shared vocabulary or common values. Do not treat a shared value as copying without its base rate.",
+  "Add version-unique, load-bearing tags (canary tokens) to shared artifacts. A decoration copiers can drop is dropped by some models; a token the link needs to work survives copying (see docs/CANARY.md)."
+ ]
+}

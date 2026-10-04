@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agloe · trap streets for AI agent swarms</title>
+<meta name="description" content="When one AI agent's mistake spreads through a swarm, can you trace it? A toolkit, a benchmark and live experiments on thousands of agents.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agloe: trap streets for AI agent swarms">
+<meta property="og:description" content="When one AI agent's mistake spreads through a swarm, can you trace it? A report card, a canary kit, a benchmark, and live experiments on thousands of agents.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<main>
+  <header class="hero">
+    <p class="eyebrow">Agloe · trap streets for AI agent swarms</p>
+    <h1>When one agent's mistake spreads through a swarm, can you trace it?</h1>
+    <p class="lede">Usually, no. We studied a real incident where AI agents passed tricks to each other through a shared wiki, then ran thousands of agents in an offline lab.
+      The logs people keep can't say who learned what from whom, and the obvious detectors accuse the wrong agents.</p>
+    <div class="hero-fig">
+      <span class="big" id="hero-num">16%</span>
+      <span class="cap">of copying in the real incident can be traced from the edit logs, <b>even by a perfect investigator</b>.</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="replay/faceoff.html">Watch the face-off (1 min)</a>
+      <a class="btn" href="colony/">Load a log into the colony</a>
+      <a class="btn" href="card/">Check your own swarm</a>
+      <a class="btn" href="replay/">Explore the swarms</a>
+    </div>
+  </header>
+
+  <section id="logs" aria-labelledby="h-logs">
+    <h2 id="h-logs">The logs you keep decide what you can know</h2>
+    <p>For every time one agent reused another's distinctive string, was the earlier author visible in the log where it happened? In the incident, reads were never logged,
+      so most sources were invisible. In AI Village, chat was logged for everyone, and copying was traceable almost every time (every week of the whole dataset), with one short dip in the weeks after chat rooms launched.
+      The point is not that AI Village is easy; it is that the incident's missing read log is what made it hard.</p>
+    <figure id="chart-ladder" class="chart" aria-label="Share of copy events whose source is visible in the log, by logging regime"></figure>
+  </section>
+
+  <section id="coincidence" aria-labelledby="h-co">
+    <h2 id="h-co">The obvious detector accuses the innocent</h2>
+    <p>"Same string means copied" is the first thing anyone tries. On the real incident logs it manufactures findings:</p>
+    <div class="tiles" id="tiles"></div>
+    <p class="small muted">Rejected flags were things like dataset field names and round timestamps that many agents type independently, each used by up to 49 different agents.
+      The three that survive are session tokens carried in URLs: the only reason those hops are provable at all.</p>
+  </section>
+
+  <section id="fingerprints" aria-labelledby="h-fp">
+    <h2 id="h-fp">AI isn't random, and each model has habits</h2>
+    <p>We gave independent agents of different models the same small task and watched which throwaway "cache-buster" value each one added to a URL.
+      Some models add one almost every time, some never do, and several reach for the same value, so a match alone is weak evidence.</p>
+    <figure id="chart-fp" class="chart" aria-label="Share of agents that add a cache-buster value, by model family"></figure>
+    <p class="small muted" id="fp-note"></p>
+  </section>
+
+  <section id="tags" aria-labelledby="h-tags">
+    <h2 id="h-tags">Trap streets: make copying confess</h2>
+    <p>Mapmakers hide a fake street so copiers give themselves away. We do the same for swarms: every time the shared wiki serves a page, each link carries its own token.
+      A copied link names the exact copy it came from. Decoration is not enough: whether a harmless-looking tag survives copying depends on the model, so the token has to be something the link needs.</p>
+    <figure id="chart-tags" class="chart" aria-label="Share of copiers that kept the tag, by model family, inert versus load-bearing"></figure>
+    <figure id="chart-attr" class="chart" aria-label="Share of copies whose source is named correctly, edit log versus tags"></figure>
+    <p class="small muted" id="tag-note"></p>
+    <div id="gated-block">
+      <h3 id="h-gated">Make the token the only way in</h3>
+      <p>Some models skip the token by fetching their own session. We closed that door in the lab: the mirror no longer hands out sessions, so the only way in is a link the wiki served.
+        Tracing then comes from the access design, not from the agents' habits. The question is what it costs.</p>
+      <figure id="chart-gated" class="chart" aria-label="Share of agents whose output carries a token naming the copy it came from, with and without gating, by model"></figure>
+      <p class="small muted" id="gated-note"></p>
+    </div>
+  </section>
+
+  <section id="cleanup" aria-labelledby="h-cl">
+    <h2 id="h-cl">When a bad tip spreads, what do you re-check?</h2>
+    <p>A wrong tip gets posted in the shared wiki and some agents use it. With no trace, the safe move is to re-run everything, or everything submitted after the tip appeared.
+      Tracing the tip gives a short list instead. Each list is scored against the hidden record of who really read what.</p>
+    <figure id="chart-cleanup" class="chart" aria-label="Share of outputs to re-check after a bad tip, by method, for a tip that arrives mid-run and a tip that is there from the start"></figure>
+    <p class="small muted" id="cleanup-note"></p>
+  </section>
+
+  <section id="teams" hidden aria-labelledby="h-teams">
+    <h2 id="h-teams">Cards from other swarms</h2>
+    <p>Teams at the hackathon ran the report card on their own logs, in their own browsers, and shared only the card. Names are withheld unless a team asked to be named.</p>
+    <div id="team-cards"></div>
+  </section>
+
+  <section id="method" aria-labelledby="h-method">
+    <h2 id="h-method">How we tested</h2>
+    <p>Every lab run is offline (reserved <code>.invalid</code> hosts), benign, and scored against a hidden answer key. The table is read from the runs themselves; the criteria below are what we held ourselves to.
+      You can replay any of these runs, with the hidden read log, in <a href="colony/">the colony</a>.</p>
+    <div id="design-table" class="tablewrap"></div>
+    <h3>The criteria</h3>
+    <dl class="crit">
+      <dt>Truth</dt><dd>The lab's hidden read log: which copy of a page each agent was served before it used a link. "Copied" means exposure, not intent. Real investigators do not have this.</dd>
+      <dt>Tag conditions</dt><dd><b>none</b>: links served as written. <b>inert</b>: every served link gets a random-looking tag (decoration). <b>load-bearing</b>: every served link gets its own session token that the mirror needs to answer.</dd>
+      <dt>What an investigator sees</dt><dd>Only the edit log (wiki writes and submissions). Baselines: blame the latest writer of the link, the earliest, or a random one, and the best of the three for each run, chosen with the answer key in hand, which is generous to the baseline.</dd>
+      <dt>Scores</dt><dd>Top-1 (the source is named correctly), recall, false accusations of agents that worked alone, calibration (ECE), and for a planted bad tip the precision and recall of the outputs the tip reached, and the share of outputs you would have to re-check.</dd>
+      <dt>Statistics</dt><dd>Rates pooled over runs with a run-level bootstrap 95% interval, because agents inside one swarm read each other and are not independent. With fewer than 3 runs the interval is the min-max.</dd>
+      <dt>Excluded</dt><dd id="excl"></dd>
+      <dt>Real data</dt><dd>The incident: 35 behaviours with at least 20 adopters; a "marker" is a distinctive string (12+ characters, not vocabulary) used by 2 to 10 agents; a match counts as copying only if chance would produce it at least 100 times less often; cross-team jumps were checked by hand. AI Village: every week of the whole chat, in 7-day windows, with the visible-source rule changing at the rooms launch (2026-02-25).</dd>
+      <dt>Budget</dt><dd id="budget"></dd>
+    </dl>
+    <h3>What we said in advance, and what happened</h3>
+    <div id="hyp-table" class="tablewrap"></div>
+    <p class="small muted">More in the <a href="paper/agloe.html">paper</a> (section 4) and <code>docs/RESULTS.md</code>.</p>
+  </section>
+
+  <section id="try" aria-labelledby="h-try">
+    <h2 id="h-try">Try it</h2>
+    <div class="cards">
+      <a class="card" href="card/"><h3>Report card</h3><p>Drop your swarm's log file. Get a graded answer to "can I trace this?" in seconds. Runs entirely in your browser; nothing is uploaded.</p></a>
+      <a class="card" href="colony/"><h3>The colony</h3><p>Drop any swarm's log, ours or yours (AI Village exports, lab runs with their hidden read log, a CSV). Every agent becomes an ant; trails form live; click an ant to trace it back to what it read and see who is downstream. Runs in your browser.</p></a>
+      <a class="card" href="replay/faceoff.html"><h3>The face-off</h3><p>A bad tip spreads through 30 agents while two investigators try to trace it from the same records: the edit log alone against trap-street codes, then what each would have to re-check. A one-minute story you can record as a video.</p></a>
+      <a class="card" href="replay/"><h3>Swarm replay</h3><p>One real lab swarm, three views: the hidden truth, what an edit log would conclude, and what canary tags reveal.</p></a>
+      <a class="card" href="paper/agloe.html"><h3>The paper</h3><p>What we measured on the real incident and in the lab, what did not work, and the limits. <a href="paper/agloe.pdf">PDF</a></p></a>
+    </div>
+  </section>
+
+  <section id="release" aria-labelledby="h-rel">
+    <h2 id="h-rel">What we are releasing</h2>
+    <ul class="list">
+      <li><b>Report card</b> (CLI and browser): <code>python -m backend.cli report --file my_swarm_logs.jsonl</code></li>
+      <li><b>Canary kit</b>: <code>backend/canary.py</code>, three calls to make your shared artifacts traceable.</li>
+      <li><b>Agloe-Bench</b>: <span id="bench-n">many</span> lab swarms with the hidden answer key, and a scorer for your own tracer (<code>bench_release/score.py</code>).</li>
+      <li><b>Paper</b>: <a href="paper/agloe.html">read it</a> · <a href="paper/agloe.pdf">PDF</a></li>
+    </ul>
+  </section>
+
+  <section id="checklist" aria-labelledby="h-chk">
+    <h2 id="h-chk">A checklist for anyone running a swarm</h2>
+    <ol class="list">
+      <li><b>Log reads, not just writes.</b> Who was shown which page or message, and when. Without it most sources are invisible.</li>
+      <li><b>Give every served copy its own token</b>, one the destination needs. Decoration gets dropped by some models; make the token the only way in.</li>
+      <li><b>Before calling a match copying, check the base rate.</b> Field names and common values are vocabulary, and different models share habits.</li>
+      <li><b>Learn your agents' habits.</b> Do they copy the first link, the newest, or redo the work themselves? The same log supports different conclusions.</li>
+      <li><b>Report the ceiling.</b> "Untraceable from these logs" is a finding, not a failure.</li>
+      <li><b>Measure who trusts a newcomer.</b> An early bad tip took over some models completely and was ignored by others, and a late one was mostly ignored. Check outputs as well as sources.</li>
+    </ol>
+  </section>
+
+  <section id="limits" aria-labelledby="h-lim">
+    <h2 id="h-lim">What this does not show</h2>
+    <ul class="list small">
+      <li>The lab is offline and uses one narrow task. It is a controlled testbed, not a model of every swarm.</li>
+      <li>"Copied" means the agent was served that link before using it. When several posts hold identical links, the true source is not defined by text, so we only score attribution where each served copy is unique.</li>
+      <li>New runs use open models on one provider; earlier Claude runs are single-seed. Results are reported per model family, with seed-level confidence intervals.</li>
+      <li>Incident data is used as aggregates only, under the dataset owners' terms. Nothing here was run against anyone's live swarm.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Team Paper Towns · AI Swarm Dynamics Hackathon. Data: collusion.wiki export (aggregates only) and the AI Village dataset (AI Digest, "AI Village dataset", 2026).</p>
+  </footer>
+</main>
+<div id="tip" role="status" aria-live="polite" hidden></div>
+<script type="module" src="site.js"></script>
+</body>
+</html>

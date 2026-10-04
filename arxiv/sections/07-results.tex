@@ -1,0 +1,106 @@
+\section{Results}\label{sec:results}
+
+\subsection{What edit logs recover on real logs}\label{sec:res-real}
+\input{tables/tab_real}
+In the incident, \noCarrier{} of the adopters had no visible carrier at all, and the best possible top-1 attribution from the edit log, even for a perfect tracer, was \bestTop{} (Table~\ref{tab:real}). The agents were reading from places the log does not record. A weaker, marker-based estimate agrees in direction: the earlier writer of a marker string was visible in 16--20\% of cases.
+
+The same measurement on AI Village gives the opposite picture, for a reason that supports the argument (Figure~\ref{fig:visibility}). Its chat is a channel everyone can read and the log contains it, so before the launch of rooms \avPre{} of copy events had a visible source across \avPreWeeks{} weeks (\avPreCopies{} events), and after it \avPost{} across \avPostWeeks{} weeks (\avPostCopies{} events; lowest week \avPostMin{}, median \avPostMedian{}). The dip after the launch lasted about three weeks (the weeks starting 11, 18 and 25 March 2026: 95\%, 88\% and 85\%) and then recovered. Pre-rooms coverage is close to tautological (a fully shared log shows every earlier message), and the room-scoped figure is an upper bound because it counts a room as visible whenever the adopter posted in it; the claim is directional: traceability is a property of what was logged, and the incident logged edits but not reads.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_visibility.pdf}
+\caption{Traceability depends on what was logged. (a)~Share of copy events whose source is visible in the log: a real incident with unlogged reads against AI Village chat. (b)~Every week of the whole AI Village chat (weeks with at least 100 copy events); the dashed line marks the launch of chat rooms.}
+\label{fig:visibility}
+\end{figure}
+
+\subsection{The coincidence trap}\label{sec:res-coincidence}
+On the incident, the naive detector made \naiveCalls{} copy calls and \trustedCalls{} survive the likelihood-ratio test at $\tau=\tauDefault{}$ (Figure~\ref{fig:calibration}a); the others rest on values common enough that chance explains them. Of \crossNaive{} apparent cross-team collusion jumps, \crossRejected{} were shared vocabulary that many agents type independently (dataset field names, schema words, round timestamps, one used by 41 agents on 12 pages and another by 49 agents on 60 pages), and \crossVerified{} survived. Those three share a property: each rode on a token minted per fetch (one archived document appears with 48 distinct session-token values, so a specific value cannot be obtained independently), or on an agent-minted short link. In other words, the only provable cross-team copying in the incident was provable because the link carried a unique, needed token: a trap street that occurred by accident, and direct support for the design of Section~\ref{sec:gateway}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_calibration.pdf}
+\caption{The coincidence trap. (a)~On the real incident, most naive copy calls and cross-team collusion jumps do not survive calibration. (b)~In a simulator, the naive detector falsely calls more independent agents copiers as their choices become more alike (monoculture), while the calibrated detector stays below the bound $1/\tau$ of Proposition~\ref{prop:calib} (here $\tau=10$).}
+\label{fig:calibration}
+\end{figure}
+
+\subsection{The theory against a simulator}\label{sec:res-sim}
+\input{tables/tab_sim}
+The model-based tracer reaches the exact Bayes ceiling under uniform and recency-biased copying (Table~\ref{tab:sim}; Figure~\ref{fig:simulator}a) and is calibrated (expected calibration error $0.019$~\citep{naeini2015obtaining}: when it reports 90--100\% it is right 98\% of the time; at 50--60\%, 52\%). The simple rules are far below it, and the heuristic collapses when most reads are off the page (Table~\ref{tab:robust} in Appendix~\ref{app:tables}). Proposition~\ref{prop:reads} is matched exactly (with $\Cz=0.46$ and half the reads logged, ceiling $0.727$ predicted and $0.727$ measured), and Proposition~\ref{prop:tags} to within $0.008$ for version-unique tags (Figure~\ref{fig:simulator}b). One tag per origin barely helps ($0.466$--$0.474$), and one tag per page behaves like a page-level read. Page-level reads are a weak substitute for item-level ones: logging the page for every copy lifts the ceiling only from $0.46$ to $0.57$. The simulator and the tracer share a model family, which is why we also test copy rules outside it (marked $^*$ in Table~\ref{tab:robust}): the tracer keeps 88--101\% of the ceiling there.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_simulator.pdf}
+\caption{The theory against a simulator with a known answer. (a)~Top-1 accuracy of tracers against the exact Bayes ceiling (black bars) under three copy rules. (b)~What a tag is worth: the ceiling and the model-based tracer follow $s+(1-s)\Cz$ for version-unique tags; tags per origin or per page barely help.}
+\label{fig:simulator}
+\end{figure}
+
+\subsection{Does the token survive copying?}\label{sec:res-survival}
+It depends on the model (Figure~\ref{fig:survival}). Models that copy links verbatim carried both decoration and tokens through: the core model kept the inert tag in \qwenInert{} of copies and the token in \qwenToken{}. Models that fetch their own session kept the token in only a minority of copies, \glmToken{} for the weakest, and decoration survived at rates that varied from 4\% to 28\%. Reading transcripts shows why. The core model's typical run is: list pages, read the page, fetch the wiki's link, submit it; the token rides along. The other models read the wiki to learn the \emph{method} and then redo it: they fetch the mirror's root to obtain a session of their own and use that, so the wiki's token is bypassed even though the link needs \emph{a} token, because in this world the mirror hands sessions to anyone. We count these agents as copiers of the behaviour, since they were served the route first, and the token, correctly, does not follow them: \emph{tags trace the artifact, not the idea}. Hypothesis H1 (Table~\ref{tab:hyp}) was therefore not met: no family satisfied both halves, because decoration survived too for the models that copy verbatim.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_survival.pdf}
+\caption{Share of copies that kept the tag, by model: decoration (inert tag) against a token the link needs. Error bars are 95\% bootstrap intervals over runs; $n$ is the number of copying agents in load-bearing runs. Models with fewer than 10 copiers in a condition are omitted for that condition.}
+\label{fig:survival}
+\end{figure}
+
+\subsection{What tokens buy}\label{sec:res-attr}
+\input{tables/tab_family}
+Against the best simple edit-log rule, tokens lift attribution by \liftMin{} to \liftMax{} points, in proportion to how often the token survives (Table~\ref{tab:family}, Figure~\ref{fig:attribution}); \nLiftTen{} of the \nLiftFamilies{} families with enough copying agents gain at least 10 points, the pre-stated threshold of H2. This is what Proposition~\ref{prop:tags} predicts: the gain is $s(1-\Cz)$, and the headroom $1-\Cz$ is large where the simple rules are poor (the core model, Hermes) and small where the earliest writer is usually right (the models that re-derive access, whose copying the edit log already traces fairly well). Tokens add exactness without learning copiers' habits, but only where the artifact itself is copied.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_attribution.pdf}
+\caption{How often the immediate source is named correctly, by model: the best simple edit-log rule for each run against the token (with that rule as fallback where the token was lost). The number above each pair is the lift in points; it is large where the token survives (Figure~\ref{fig:survival}).}
+\label{fig:attribution}
+\end{figure}
+
+\paragraph{The benchmark.}
+Pooled over \benchCells{} tagged runs, a token identifies the immediate source of \benchTagsTop{} of copying agents, against \benchEarliestTop{} for the earliest writer, \benchLatestTop{} for the latest, \benchUniformTop{} for a random one, and \benchConsTop{} for the rule that names a source only when it is unambiguous (Table~\ref{tab:bench}, Figure~\ref{fig:benchmark}). The simple rules name a source whenever any earlier writer posted the same link, so they accuse \benchRuleFA{} of agents that worked alone, which is partly by construction; the unambiguous rule accuses only \benchConsFA{} but finds almost nothing, and the token tracer combines recall \benchTagsRecall{} with \benchTagsFA{} false accusations and a calibration gap of \benchTagsECE{}. Pooling is dominated by the core model, so Table~\ref{tab:family} is the honest view. The scale table in Appendix~\ref{app:tables} shows the same picture at 10, 30 and 100 agents and in a mixed swarm in which nearly all copies cross family lines, with the token surviving in only about a fifth of them.
+
+\input{tables/tab_bench}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_benchmark.pdf}
+\caption{Benchmark baselines on the tagged runs: (a)~copying agents whose source is named correctly; (b)~agents that worked alone but were accused of copying. The first three rules blame an earlier writer whenever one exists, so (b) is high for them by construction.}
+\label{fig:benchmark}
+\end{figure}
+
+\subsection{Bad tips: who takes them, and what to re-check}\label{sec:res-tip}
+\paragraph{Whether a tip takes hold depends on the model.}
+When the planted tip is there from the start, every agent of the core model adopted it (\qwenEarly{}). In 18 of its 20 tagged runs the deepest chain of copies back to the tip was six to nine hops long (three and four in the other two; the source of an untagged copy is undefined, so depth is only measured where tags exist). Other families adopted it partly or not at all (Figure~\ref{fig:tip}); one family never did (\gptossEarly{}). A tip that arrives mid-run was ignored by most families (the core model prefers the first link it sees). An early hypothesis of ours, that timing beats model, was wrong and is retracted (Section~\ref{sec:problems}). Table~\ref{tab:tip} in Appendix~\ref{app:tables} gives the numbers with intervals.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_tip.pdf}
+\caption{Outputs that carry the planted bad value, by model, for a tip that arrives mid-run and a tip that is there from the start. Intervals are wide because there are two to four runs per model.}
+\label{fig:tip}
+\end{figure}
+
+\paragraph{What to re-check.}
+\input{tables/tab_cleanup}
+For a tip that arrives mid-run, re-checking everything submitted after it appeared means \recheckAfter{} of outputs. Following the trace back to the tip gives \recheckTrace{}--\recheckEarliest{} and finds \recheckFoundLo{}--\recheckFoundHi{} of the outputs the tip reached (Table~\ref{tab:cleanup}, Figure~\ref{fig:cleanup}). Tracing is what saves the work, not tokens as such: for a single-source tip the earliest-writer rule is nearly as good, and tokens make the list exact (every flagged output is affected) and matter when many posts carry the same link. Two limits matter. A tip that is there from the start reaches \earlyReach{} of outputs, so no list saves much; the saving is in catching a tip early. And some wrong outputs reach the stale value another way (agents that try the stale mirror on their own); no trace from the tip can find those, and only fixing the mirror can. Proposition~\ref{prop:depth} explains why the lists that use only tokens find fewer affected outputs than those with a fallback: a single lost token on a path breaks the trace.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_cleanup.pdf}
+\caption{What an operator would re-check after a bad tip, as a share of outputs (lower is less work), by how the list is made. Tracing cuts a mid-run tip from about five sixths of outputs to under a tenth; a tip that is there from the start reaches most outputs whatever list is used.}
+\label{fig:cleanup}
+\end{figure}
+
+\subsection{Making the token the only way in}\label{sec:res-gate}
+The weakness of Section~\ref{sec:res-survival} is that agents can re-derive access. We closed that door in a controlled pair of worlds with a coordinator's entry link: W4, where the mirror hands a session to anyone, and W4G, where it hands out nothing, so the only way in is a link the wiki served. For the \nBypassWord{} models that bypassed the token, the share of outputs carrying a token that names the copy they came from rose from \gatedOpenLo{}--\gatedOpenHi{} to 100\%, every agent still finished, and the number of refused calls per agent barely changed (Table~\ref{tab:gated}, Figure~\ref{fig:gated}). The core model, which already copied links, was unchanged. \input{tables/tab_gated}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_gated.pdf}
+\caption{Closing the other way in. Share of outputs that carry a token naming the copy they came from, when the mirror hands a session to anyone (open) and when sessions come only through links the wiki served (gated). The line below each pair gives the share of agents that submitted the right answer.}
+\label{fig:gated}
+\end{figure}
+
+This result follows from the access design (Proposition~\ref{prop:gate}): if the only way in is a coded link, every output that exists carries a token. It measures feasibility and cost, not a discovery about attribution. The source is named correctly 88--100\% of the time rather than always (Table~\ref{tab:gated}), because an agent sometimes reports a different link from the one it fetched first. And a gate traces access, not ideas: an agent that learns from a peer which mirror works and then obtains access through another legitimate route leaves no trail.
+
+\subsection{Habits, and the hypotheses}\label{sec:res-habits}
+Independent agents differ sharply in whether they add a throwaway ``random'' value to a URL, and several choose the same one (Table~\ref{tab:habits} in Appendix~\ref{app:tables}); a naive-Bayes classifier that names an agent's family from its behaviour alone reaches 29.7\% against 12.5\% by chance (leave-one-run-out, 720 agents). But hypothesis H3, that agents of one family collide more than agents of different families, was not supported among open models: several families default to the same value, so convention crosses vendor lines. The practical lesson is the one of Proposition~\ref{prop:calib}: a shared value is weak evidence without its base rate, whichever model produced it. Table~\ref{tab:hyp} summarises all five hypotheses and their outcomes.
+
+\input{tables/tab_hyp}

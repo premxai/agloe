@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agloe · Swarm Replay</title>
+<meta name="description" content="One AI swarm, three views: the hidden truth of who copied whom, what an edit log alone would conclude, and what canary tags reveal.">
+<link rel="stylesheet" href="replay.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Agloe · trap streets for AI agent swarms</p>
+    <p class="small"><a href="faceoff.html">▶ Watch the one-minute face-off first</a></p>
+    <h1>Same swarm. Three views.</h1>
+    <p class="lede">Each dot is an AI agent, in the order it finished. Each arc points from an agent to the teammate it <em>actually</em> copied its working link from.
+      Switch views to see what an investigator would conclude from the edit log alone, and what canary tags reveal.</p>
+  </header>
+
+  <div class="controls">
+    <label class="pick">Swarm <select id="pick" aria-label="Choose a recorded swarm"></select></label>
+    <div class="tabs" role="tablist" aria-label="View">
+      <button role="tab" id="tab-truth" data-view="truth" aria-selected="true">Hidden truth</button>
+      <button role="tab" id="tab-edit_log" data-view="edit_log" aria-selected="false">Edit log only</button>
+      <button role="tab" id="tab-tags" data-view="tags" aria-selected="false">With canary tags</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <canvas id="c" role="img" aria-label="Arc diagram of which agent copied from which"></canvas>
+    <div id="tip" role="status" aria-live="polite" hidden></div>
+  </div>
+
+  <div class="playbar">
+    <button id="play" aria-label="Play or pause">Play</button>
+    <button id="clip" title="Records the three views with captions and downloads a video you can post">Make a clip</button>
+    <input id="scrub" type="range" min="0" max="1000" value="1000" aria-label="Time">
+    <span id="clock" class="muted"></span>
+  </div>
+
+  <section class="stats" aria-live="polite">
+    <div class="stat"><span class="lbl" id="s1l"></span><span class="num" id="s1"></span><span class="hint" id="s1h"></span></div>
+    <div class="stat"><span class="lbl" id="s2l"></span><span class="num" id="s2"></span><span class="hint" id="s2h"></span></div>
+    <div class="stat"><span class="lbl" id="s3l"></span><span class="num" id="s3"></span><span class="hint" id="s3h"></span></div>
+  </section>
+
+  <p id="explain" class="explain"></p>
+  <div class="legend" aria-label="Legend">
+    <span><i class="sw ok"></i> correct source</span><span><i class="sw bad"></i> wrong source</span><span><i class="sw ghost"></i> accuses an agent that found it alone</span>
+    <span><i class="dot ring"></i> worked alone</span><span><i class="dot fill"></i> copied</span><span><i class="dot stale"></i> submitted the stale value</span><span><i class="dia"></i> planted bad tip</span>
+  </div>
+  <p class="muted small">Click an agent to trace its chain back, in the current view. Real runs of an offline lab (no real systems): AI agents search a wiki for a data mirror and share links.
+    “Truth” comes from the lab's hidden read log, which no real investigator has. <a href="../card/">Run the report card on your own swarm →</a></p>
+</main>
+<script type="module" src="replay.js"></script>
+</body>
+</html>

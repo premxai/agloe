@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{The offline lab as it was run (read from the run records). A run is one swarm; ``size'' is agents per swarm.}\label{tab:design}
+\begin{tabular}{@{}lL{4.6cm}lL{2.0cm}lrr@{}}
+\toprule
+World & What it is & Models & Tags & Size & Runs & Agent runs \\
+\midrule
+FP & no wiki; independent agents; we record the ``random'' values each model adds to a URL & 8 models & none & 30 & 24 & 720 \\
+W1 & a shared wiki; agents route around a ``down'' data server and share working links & 8 models & none/\allowbreak inert/\allowbreak load-bearing & 10, 30, 100 & 66 & 2{,}090 \\
+W2 & W1 plus a team-notes page; a bad tip appears on it after 5 agents have submitted, and the stale mirror it points to gives no warning & 9 models & none/\allowbreak inert/\allowbreak load-bearing & 30 & 62 & 1{,}860 \\
+W2E & like W2, but the bad tip is there from the start & 8 models & none/\allowbreak inert/\allowbreak load-bearing & 30 & 44 & 1{,}320 \\
+W3 & like W2, with agents from all eight model families in one wiki & mixed (all 8) & none/\allowbreak inert/\allowbreak load-bearing & 45 & 15 & 675 \\
+W4 & a coordinator posts a working link; the mirror still hands a session to anyone, so agents can find their own way in & 5 models & load-bearing & 30 & 10 & 300 \\
+W4G & like W4, but the mirror hands out nothing: the only way in is a link the wiki served & 5 models & load-bearing & 30 & 10 & 300 \\
+\midrule
+All &  &  &  &  & 231 & 7{,}265 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\parbox{0.96\linewidth}{\footnotesize 14 connectivity checks are not counted. Three flawed bad-tip designs were set aside (Section~\ref{sec:problems}); the run records of 2 of them are kept with the data.}
+\end{table*}

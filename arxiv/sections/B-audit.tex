@@ -1,0 +1,19 @@
+\section{The audit in detail}\label{app:audit}
+
+\paragraph{Input.}
+One JSON object per line (or one JSON array, or a CSV with a header row) with fields agent, time, channel and content; common aliases are accepted (\eg author, timestamp, room, text), nested content is serialised, and a field mapper lets a user choose columns or use row order when there are no timestamps. Optional fields: \texttt{kind} (\texttt{read}, \texttt{write}, \texttt{submit}), \texttt{source} (for a read, the author of what was read) and \texttt{flag} (an output known to be bad). Reads are not things an agent wrote and are ignored by the copy calls of Algorithm~\ref{alg:audit}.
+
+\paragraph{Token extraction.}
+Content is URL-decoded up to three times, redaction markers are removed, and tokens are runs of at least 12 characters from letters, digits, underscore and hyphen. A token is kept if it is not a common header or word, not a hex run of 24 or more characters or an all-digit run, has at least seven distinct characters, and contains a digit, mixed case or an underscore; strings that decode from base64 to text containing common markers are dropped.
+
+\paragraph{Classes.}
+UUID; wayback timestamp (constructed round times are vocabulary; real captures are weak evidence); snake\_case identifier and camelCase identifier (vocabulary); high-entropy identifier (Shannon entropy $\ge3.3$ bits per character and length $\ge12$); other.
+
+\paragraph{Trust rule and grade.}
+A string used by $n$ agents is trusted if $2\le n\le10$, its class is not vocabulary, and it is either high-strength (UUID or high-entropy) or used by at most three agents. Carrier coverage is the share of trusted rows with at least one visible carrier; its 95\% interval is Wilson's. Grades A, B, C, D and F correspond to coverage at least 90\%, 70\%, 50\%, 25\% and below. The \emph{best possible top-1} averages $1/m$ over trusted rows ($m$ visible carriers, $0$ when none). With no trusted row the grade is N/A.
+
+\paragraph{The likelihood-ratio test on the incident.}
+For the inert-parameter analysis of Section~\ref{sec:setup-real}, the base rate $p$ of a value is estimated from agents that were first to choose a value in a given URL structure (so that copying cannot inflate it), and a reuse is calibrated when $1/p\ge\tau=\tauDefault{}$. Values too common to count (the remainder) are declined, not called coincidences: the evidence cannot say.
+
+\paragraph{Parity.}
+The browser and command-line versions share one specification; a test requires identical counts, grades, shared-string tables and recommendations on all fixtures, including samples of the real logs (kept local), with ties in the shared-string table broken by name in both. A further test requires the colony viewer's tracing core to count copies exactly as the audit does.
