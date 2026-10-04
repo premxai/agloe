@@ -67,10 +67,7 @@ python -m scripts.write_results_lab            # regenerates the lab sections of
 python -m scripts.build_site_data && python -m scripts.build_paper --pdf
 ```
 
-The lab run records (`data/lab/`, about 7,300 agent runs, 56 MB) are not in git; `python -m scripts.make_hf_release` packages them (without agent transcripts) as a dataset folder, see [`docs/HF_RELEASE.md`](docs/HF_RELEASE.md). Re-running the analysis (`scripts.finalize`) or the paper build (`python -m scripts.build_arxiv`, then `python -m scripts.pack_arxiv`) needs those records in `data/lab/`. The committed `bench_release/` and `frontend/data/` are enough to run the benchmark scorer and the site.
-
-`arxiv/` holds an arXiv-format version of the paper as a draft (author names and some links are still marked in red); `python -m scripts.arxiv_placeholders` lists what is left.
-
+The lab run records (`data/lab/`, about 7,300 agent runs, 56 MB) are not in git; `python -m scripts.make_hf_release` packages them (without agent transcripts) as a dataset folder, see [`docs/HF_RELEASE.md`](docs/HF_RELEASE.md). Re-running the analysis (`scripts.finalize`) needs those records in `data/lab/`. The committed `bench_release/` and `frontend/data/` are enough to run the benchmark scorer and the site.
 Keys live in `.env` only (never committed; see `.env.example`). The real-data analyses (`backend.cli audit|neutral|markers`, `scripts/run_ai_village.py`, `scripts/verify_readmap.py`) need datasets you obtain yourself (see below) and are not run by the tests.
 
 ## Data and ethics
@@ -86,9 +83,7 @@ Keys live in `.env` only (never committed; see `.env.example`). The real-data an
 backend/analysis/report.py   the report card (CLI + parity reference)      backend/canary.py   canary-tag kit
 backend/sim, backend/bench   simulator with ground truth, ceilings, tracers  backend/adapters   collusion.wiki / AI Village adapters
 experiments/lab              lab grid, resumable runner, analysis              experiments/mini_swarm   offline worlds and agents
-frontend/{card,replay,paper} browser report card, swarm replay, paper         bench_release        Agloe-Bench scorer and format
-arxiv/                       arXiv-format paper (LaTeX, generated from results)  scripts/arxiv_*.py, build_arxiv.py, pack_arxiv.py   its generators
-scripts/                     exports, site and paper builders, live demo       docs/                RESULTS, CANARY, LAUNCH drafts
+frontend/{card,replay,paper} browser report card, swarm replay, paper         bench_release        Agloe-Bench scorer and formatscripts/                     exports, site and paper builders, live demo       docs/                RESULTS, CANARY, HF_RELEASE
 ```
 
 ## License

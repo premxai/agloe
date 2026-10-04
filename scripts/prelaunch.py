@@ -89,10 +89,6 @@ def check_placeholders() -> None:
         left = [t for t in LINK_PLACEHOLDERS if t in text]
         if left:
             todos.append(f"{rel}: still has {', '.join(left)}  (fill it in by hand)")
-    r = subprocess.run([sys.executable, "-m", "scripts.arxiv_placeholders"], cwd=ROOT, capture_output=True, text=True)
-    last = [l for l in r.stdout.splitlines() if l.strip()][-1:] or [""]
-    if r.returncode:
-        todos.append(f"arXiv paper: {last[0]}  (draft: authors, dataset link, licence of the data, provider details)")
     git = subprocess.run(["git", "status", "--short"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
     if git:
         todos.append(f"{len(git)} uncommitted change(s): git add -A && git commit")

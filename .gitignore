@@ -30,16 +30,6 @@ scripts/probe_bio.py
 # local build tools (a portable TeX engine)
 /tools/
 
-# arXiv build output (rebuilt by scripts.pack_arxiv)
-/arxiv/main.pdf
-/arxiv/main.bbl
-/arxiv/dist/
-/arxiv/*.aux
-/arxiv/*.log
-/arxiv/*.out
-/arxiv/*.blg
-/arxiv/*.xdv
-
 # demo clips (large; upload them yourself)
 /media/
 /hf_release/

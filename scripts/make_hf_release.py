@@ -3,7 +3,7 @@
   python -m scripts.make_hf_release
 
 Contents: the benchmark (bench/), the lab run records without agent transcripts (lab_runs/, plus lab_runs_discarded_designs/ for the flawed designs
-described in the paper), the analysis outputs the paper reads (analysis/), a dataset card (README.md) and MANIFEST.sha256.
+described in docs/RESULTS.md), the analysis outputs (analysis/), a dataset card (README.md) and MANIFEST.sha256.
 NEVER included: raw AI Village or incident data, transcripts, live-demo runs, keys. See docs/HF_RELEASE.md for the upload commands.
 """
 from __future__ import annotations
@@ -86,8 +86,8 @@ def card(res: dict, runs: int, discarded: int) -> str:
 
 **Status: draft. Fill the TODO lines before publishing.**
 
-Data for the paper "Trap Streets for Agent Swarms: Making Copying Confess When Reads Go Unlogged": a benchmark for tracing how an item spread between LLM agents from their
-edit logs, with a hidden read log as the answer key, and the run records of the offline lab behind the paper's results.
+A benchmark for tracing how an item spread between LLM agents from their edit logs, with a hidden read log as the answer key, and the run records of the offline lab
+behind the results in the project repository (docs/RESULTS.md).
 
 ## Contents
 | Folder | What it is |
@@ -95,7 +95,7 @@ edit logs, with a hidden read log as the answer key, and the run records of the 
 | `bench/` | The benchmark: `manifest.json`, `edit_log/` (the input a tracer sees), `truth/` (hidden answer key), `registry/` (token to served copy, for the token track), `ceiling/`, `baselines.json`, `score.py` (standard library only), `README.md` (format). {sp.get('bench_cells', 187)} cells; the {150} with inert or load-bearing tags form the baseline set. |
 | `lab_runs/` | One folder per lab run (a swarm): `run.json` (world, tag condition, model family, size, seed, cost) and `world.json` (writes, served reads, fetches, submissions, tokens). {runs} runs, {sp.get('lab_agent_runs', 'about 7,300')} agent runs in total. **No agent transcripts.** |
 | `lab_runs_discarded_designs/` | Run records ({discarded} runs) of two of the three bad-tip designs we set aside as flawed, kept so the claim can be checked. Connectivity checks (seed 900 and up) are not included. |
-| `analysis/` | The analysis outputs the paper's figures, tables and numbers are generated from. `ai_village_full_aggregates.json` holds weekly counts only. |
+| `analysis/` | The analysis outputs the results are generated from. `ai_village_full_aggregates.json` holds weekly counts only. |
 | `MANIFEST.sha256` | Checksums of every file. |
 
 ## How the data was made
@@ -108,7 +108,7 @@ Raw AI Village data (gated, research-use; cite AI Digest, "AI Village dataset", 
 handles or URLs; `ai_village_full_aggregates.json` is counts per week.
 
 ## Licence and citation
-**TODO: licence (CC BY 4.0 is a common choice for data).** Code: https://github.com/premxai/agloe (commit `{commit()}` when this folder was built). **TODO: citation (arXiv ID) once posted.**
+**TODO: licence (CC BY 4.0 is a common choice for data).** Code: https://github.com/premxai/agloe (commit `{commit()}` when this folder was built). **TODO: citation once there is a paper to cite.**
 """
 
 
