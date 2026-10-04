@@ -1,0 +1,8 @@
+# One line-ending convention for the whole repo (files were written on Windows with a mix of LF and CRLF).
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.gz binary
+*.zip binary
+*.mp4 binary
+*.webm binary

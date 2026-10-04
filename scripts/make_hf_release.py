@@ -108,7 +108,7 @@ Raw AI Village data (gated, research-use; cite AI Digest, "AI Village dataset", 
 handles or URLs; `ai_village_full_aggregates.json` is counts per week.
 
 ## Licence and citation
-**TODO: licence (CC BY 4.0 is a common choice for data).** Code: `<github url>` (commit `{commit()}` when this folder was built). **TODO: citation (arXiv ID) once posted.**
+**TODO: licence (CC BY 4.0 is a common choice for data).** Code: https://github.com/premxai/agloe (commit `{commit()}` when this folder was built). **TODO: citation (arXiv ID) once posted.**
 """
 
 

@@ -10,7 +10,6 @@ tables/               booktabs tables GENERATED from the result files
 figures/              vector PDF figures GENERATED from the result files
 refs.bib              references (every arXiv entry checked against its abstract page)
 abstract.txt          plain-text abstract for the arXiv form (1,504 characters)
-TODO_BEFORE_ARXIV.md  what you still have to fill in and decide
 ```
 
 Rebuild the generated parts, compile, and make the upload zip (from the repository root):

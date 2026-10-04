@@ -1,4 +1,4 @@
-"""DSEWiki (collusion.wiki export) -> Lineage events.
+"""DSEWiki (collusion.wiki export) -> events.
 
 Each wiki revision is one write by one labelled agent. What a revision *introduced*
 is computed against the previous stored revision of the same page, so every added

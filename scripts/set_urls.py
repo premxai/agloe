@@ -1,9 +1,8 @@
-"""Fill the link placeholders once you have the real URLs.
+"""Fill the paper's link placeholders once you have the URLs.
 
-  python -m scripts.set_urls --site https://agloe.vercel.app --repo https://github.com/you/agloe [--video URL] [--hf URL]
+  python -m scripts.set_urls [--repo https://github.com/you/agloe] [--hf https://huggingface.co/datasets/you/name]
 
-Replaces <deployed url>, <site url>, <link> (site), <github url> (repo), <video url> and <hf dataset url> in README.md and docs/*.md, and,
-when --repo / --hf are given, the paper's GITHUB-URL, HUGGING-FACE-DATASET-URL and URLs placeholders in arxiv/. It prints what it changed;
+Replaces the GITHUB-URL, HUGGING-FACE-DATASET-URL and URLs placeholders in arxiv/ (main.tex, sections/, abstract.txt). Prints what it changed;
 re-run `python -m scripts.pack_arxiv` afterwards to rebuild the arXiv zip.
 """
 from __future__ import annotations
@@ -29,46 +28,27 @@ def replace_in(path: Path, pairs: list[tuple[str, str]]) -> int:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--site"), ap.add_argument("--repo"), ap.add_argument("--video"), ap.add_argument("--hf")
+    ap.add_argument("--repo"), ap.add_argument("--hf")
     a = ap.parse_args()
-    if not any((a.site, a.repo, a.video, a.hf)):
-        ap.error("give at least one of --site --repo --video --hf")
-    clean = lambda u: u.rstrip("/") if u else u
-    site, repo, video, hf = clean(a.site), clean(a.repo), clean(a.video), clean(a.hf)
+    if not (a.repo or a.hf):
+        ap.error("give --repo and/or --hf")
+    repo, hf = (u.rstrip("/") if u else u for u in (a.repo, a.hf))
 
-    doc_pairs: list[tuple[str, str]] = []
-    if site:
-        doc_pairs += [("<deployed url>", site), ("<site url>", site), ("<link>", site)]
+    pairs: list[tuple[str, str]] = []
     if repo:
-        doc_pairs += [("<github url>", repo)]
-    if video:
-        doc_pairs += [("<video url>", video)]
+        pairs.append(("\\ph{GITHUB-URL}", f"\\url{{{repo}}}"))
     if hf:
-        doc_pairs += [("<hf dataset url>", hf)]
-    total = 0
-    for p in [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]:
-        n = replace_in(p, doc_pairs)
-        total += n
-        if n:
-            print(f"{p.relative_to(ROOT)}: {n} replaced")
-
-    tex_pairs: list[tuple[str, str]] = []
-    if repo:
-        tex_pairs.append(("\\ph{GITHUB-URL}", f"\\url{{{repo}}}"))
-    if hf:
-        tex_pairs.append(("\\ph{HUGGING-FACE-DATASET-URL}", f"\\url{{{hf}}}"))
-    if repo and hf:
-        tex_pairs.append(("\\ph{URLs}", f"\\url{{{repo}}} and \\url{{{hf}}}"))
-    elif repo:
-        tex_pairs.append(("\\ph{URLs}", f"\\url{{{repo}}}"))
-    arx = ROOT / "arxiv"
+        pairs.append(("\\ph{HUGGING-FACE-DATASET-URL}", f"\\url{{{hf}}}"))
+    if repo and hf:                      # the abstract names code and data, so it waits for both
+        pairs.append(("\\ph{URLs}", f"\\url{{{repo}}} and \\url{{{hf}}}"))
+    arx, total = ROOT / "arxiv", 0
     for p in [arx / "main.tex", *sorted((arx / "sections").glob("*.tex"))]:
-        n = replace_in(p, tex_pairs)
+        n = replace_in(p, pairs)
         total += n
         if n:
             print(f"{p.relative_to(ROOT)}: {n} replaced")
-    if repo:
-        n = replace_in(arx / "abstract.txt", [("[URLs]", repo + (f" and {hf}" if hf else ""))])
+    if repo and hf:
+        n = replace_in(arx / "abstract.txt", [("[URLs]", f"{repo} and {hf}")])
         total += n
         if n:
             print(f"arxiv/abstract.txt: {n} replaced")

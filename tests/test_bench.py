@@ -1,4 +1,4 @@
-"""SwarmLineageBench invariants. These guard the claims the paper makes."""
+"""Simulation benchmark invariants. These guard the claims the paper makes."""
 from dataclasses import replace
 
 import pytest

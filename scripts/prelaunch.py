@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SECRET = re.compile(r"(sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|hf_[A-Za-z0-9]{30,}|eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{10,}|(?:api[_-]?key|token|secret)['\"]?\s*[:=]\s*['\"][A-Za-z0-9_-]{20,}['\"])")
 PERSONAL = re.compile(r"(C:\\Users\\|/Users/[a-z]|sri varshini)", re.I)
 FORBIDDEN = re.compile(r"(^|/)(data/raw/|\.env$|chat_messages|revisions.*\.(jsonl|gz|json)$)")
-LINK_PLACEHOLDERS = ["<deployed url>", "<site url>", "<github url>", "<video url>", "<hf dataset url>", "<names and emails>"]
+LINK_PLACEHOLDERS = ["<deployed url>", "<site url>", "<github url>", "<video url>", "<hf dataset url>"]
 TEXT_SUFFIXES = {".py", ".js", ".mjs", ".html", ".css", ".md", ".json", ".jsonl", ".tex", ".bib", ".txt", ".yml", ".yaml", ".toml"}
 
 fails: list[str] = []
@@ -68,7 +68,7 @@ def check_site() -> None:
             if not (p.exists() or (p.is_dir() and (p / "index.html").exists()) or (p.with_suffix(".html")).exists()):
                 broken.append(f"{f.relative_to(fe).as_posix()} -> {r}")
     bad_json = []
-    for j in list((fe / "data").glob("*.json")) + [fe / "vercel.json"] + list((fe / "replay" / "data").glob("*.json")):
+    for j in list((fe / "data").glob("*.json")) + list((fe / "replay" / "data").glob("*.json")):
         try:
             json.loads(j.read_text(encoding="utf-8"))
         except Exception as e:  # noqa: BLE001
@@ -84,15 +84,15 @@ def check_site() -> None:
 
 
 def check_placeholders() -> None:
-    for rel in ("README.md", "docs/SUBMISSION.md"):
+    for rel in ("README.md", "docs/RESULTS.md", "docs/CANARY.md", "docs/HF_RELEASE.md"):
         text = (ROOT / rel).read_text(encoding="utf-8")
         left = [t for t in LINK_PLACEHOLDERS if t in text]
         if left:
-            todos.append(f"{rel}: still has {', '.join(left)}  (python -m scripts.set_urls --site ... --repo ...)")
+            todos.append(f"{rel}: still has {', '.join(left)}  (fill it in by hand)")
     r = subprocess.run([sys.executable, "-m", "scripts.arxiv_placeholders"], cwd=ROOT, capture_output=True, text=True)
     last = [l for l in r.stdout.splitlines() if l.strip()][-1:] or [""]
     if r.returncode:
-        todos.append(f"arXiv paper: {last[0]}  (arxiv/TODO_BEFORE_ARXIV.md; not needed for the hackathon submission)")
+        todos.append(f"arXiv paper: {last[0]}  (draft: authors, dataset link, licence of the data, provider details)")
     git = subprocess.run(["git", "status", "--short"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
     if git:
         todos.append(f"{len(git)} uncommitted change(s): git add -A && git commit")

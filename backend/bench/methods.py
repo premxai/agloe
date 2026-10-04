@@ -1,4 +1,4 @@
-"""Inference methods for SwarmLineageBench. Each sees ONLY `world.obs` and `world.visits`, never `world.truth`.
+"""Inference methods for the simulation benchmark. Each sees ONLY `world.obs` and `world.visits`, never `world.truth`.
 
 A method returns, per adoption event, a ranked list of candidate parent ids and an evidence tier
 (A direct / B supported / C possible / D abstain). An empty list means "I cannot tell".

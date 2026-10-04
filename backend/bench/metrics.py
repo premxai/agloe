@@ -1,4 +1,4 @@
-"""Scoring and the Bayes ceiling for SwarmLineageBench."""
+"""Scoring and the Bayes ceiling for the simulation benchmark."""
 from __future__ import annotations
 
 from collections import Counter, defaultdict

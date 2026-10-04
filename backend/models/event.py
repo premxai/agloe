@@ -1,4 +1,4 @@
-"""Lineage Event IR. Ordering is not causality: edges come only from LineageEdge."""
+"""Event IR. Ordering is not causality: edges come only from LineageEdge."""
 from __future__ import annotations
 
 from datetime import datetime

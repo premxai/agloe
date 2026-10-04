@@ -1,4 +1,4 @@
-"""Run SwarmLineageBench and write data/out/bench_results.json (+ markdown tables on stdout).
+"""Run the simulation benchmark and write data/out/bench_results.json (+ markdown tables on stdout).
 
 Run: python -m backend.bench.run [--seeds 20]
 """
@@ -129,7 +129,7 @@ def main() -> None:
     if args.only == "robustness":
         res = json.loads(OUT.read_text(encoding="utf-8")); robustness(res, seeds); OUT.write_text(json.dumps(res, indent=1), encoding="utf-8"); return
     res = {"base": BASE.__dict__, "seeds": seeds, "copy_models": {}, "reads_item": {}, "reads_page": {}, "offpage": {}}
-    print(f"# SwarmLineageBench ({seeds} seeds per cell; ~{BASE.steps} steps, {BASE.n_agents} agents)\n")
+    print(f"# Simulation benchmark ({seeds} seeds per cell; ~{BASE.steps} steps, {BASE.n_agents} agents)\n")
 
     print("## 1. Methods vs the Bayes ceiling (no reads logged)\n")
     names = ["random", "earliest", "latest", "most_similar", "ours", "em", "oracle"]

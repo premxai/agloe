@@ -4,7 +4,7 @@
 Agloe is a toolkit and a benchmark for answering that honestly: audit how traceable your swarm is, tell real copying from coincidence, and plant canary tags so the next incident is traceable.
 Built for the AI Swarm Dynamics Hackathon by **Paper Towns**. *Read the past honestly, make the future traceable.*
 
-- **Live site / demo:** `<deployed url>` · **Paper:** [`frontend/paper/agloe.pdf`](frontend/paper/agloe.pdf) · **Results:** [`docs/RESULTS.md`](docs/RESULTS.md)
+- **Run the demo locally:** `python -m http.server 5188 --directory frontend`, then open `http://localhost:5188/` (see [Use it](#use-it)) · **Paper:** [`frontend/paper/agloe.pdf`](frontend/paper/agloe.pdf) · **Results:** [`docs/RESULTS.md`](docs/RESULTS.md)
 - Named after Agloe, New York: a fake town mapmakers invented so that anyone copying their map would give themselves away.
 
 ## What we found (short)
@@ -52,8 +52,7 @@ The page states the criteria each run was set up under, and the project page has
 
 **Swarm replay** (`frontend/replay/`): one real lab swarm, three views: hidden truth, what the edit log would conclude, what tags reveal. Run a fresh swarm live (offline sandbox, a few cents): `python -m scripts.live_demo`.
 
-**Local site:** `python -m http.server 5188 --directory frontend`, then open `http://localhost:5188/`.
-**Deploy** (static, no build): `cd frontend && npx vercel --prod` (the config and ignore file are in `frontend/`).
+**Local site:** `python -m http.server 5188 --directory frontend`, then open `http://localhost:5188/`. It is a static site with no build step, and it never contacts another server.
 
 ## Reproduce
 
@@ -68,7 +67,9 @@ python -m scripts.write_results_lab            # regenerates the lab sections of
 python -m scripts.build_site_data && python -m scripts.build_paper --pdf
 ```
 
-The lab run records (`data/lab/`, about 7,300 agent runs) are not in git. To re-run the analysis, `scripts.finalize` or the paper build (`python -m scripts.build_arxiv`, then `python -m scripts.pack_arxiv`), download them from the Hugging Face dataset (`<hf dataset url>`) into `data/lab/`. The committed `bench_release/` and `frontend/data/` are enough to run the benchmark scorer and the site.
+The lab run records (`data/lab/`, about 7,300 agent runs, 56 MB) are not in git; `python -m scripts.make_hf_release` packages them (without agent transcripts) as a dataset folder, see [`docs/HF_RELEASE.md`](docs/HF_RELEASE.md). Re-running the analysis (`scripts.finalize`) or the paper build (`python -m scripts.build_arxiv`, then `python -m scripts.pack_arxiv`) needs those records in `data/lab/`. The committed `bench_release/` and `frontend/data/` are enough to run the benchmark scorer and the site.
+
+`arxiv/` holds an arXiv-format version of the paper as a draft (author names and some links are still marked in red); `python -m scripts.arxiv_placeholders` lists what is left.
 
 Keys live in `.env` only (never committed; see `.env.example`). The real-data analyses (`backend.cli audit|neutral|markers`, `scripts/run_ai_village.py`, `scripts/verify_readmap.py`) need datasets you obtain yourself (see below) and are not run by the tests.
 
@@ -92,4 +93,4 @@ scripts/                     exports, site and paper builders, live demo       d
 
 ## License
 
-Code: MIT. Data and third-party content keep their owners' terms (see above).
+Code: MIT, see [`LICENSE`](LICENSE). Data and third-party content keep their owners' terms (see above).

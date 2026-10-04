@@ -26,4 +26,4 @@ hf auth login                                   # older versions: huggingface-cl
 hf upload <your-username>/<dataset-name> hf_release . --repo-type dataset
 ```
 
-Then put the dataset URL into the paper and the README: `python -m scripts.set_urls --hf https://huggingface.co/datasets/<your-username>/<dataset-name>` (add `--repo` and `--site` too if not done yet), re-run `python -m scripts.pack_arxiv`, and commit.
+Then put the dataset URL into the paper and the README: `python -m scripts.set_urls --hf https://huggingface.co/datasets/<your-username>/<dataset-name>`, re-run `python -m scripts.pack_arxiv`, and commit.

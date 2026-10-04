@@ -1,4 +1,4 @@
-"""SwarmLineageBench simulator: agents edit shared pages and copy a behavior from carriers.
+"""Simulator for the benchmark in backend/bench: agents edit shared pages and copy a behavior from carriers.
 
 The simulator emits two separate things:
   * `World.obs`   what an investigator could see (agent, time, page, variant, optional read log)
